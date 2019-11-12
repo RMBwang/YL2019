@@ -1,5 +1,5 @@
 import axios from "axios"
-import { promises } from "dns"
+// import { promises } from "dns"
 
 
 
@@ -16,7 +16,9 @@ const server=axios.create({
 server.interceptors.request.use((config)=>{
     if(config.method=="get"){
         config.params={...config.data}
+      
     }
+    return config;
 }),(err)=>{
     Promise.reject(err)
 }
