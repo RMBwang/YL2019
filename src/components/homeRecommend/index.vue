@@ -47,7 +47,7 @@ export default {
   margin: 0 0.2rem;
   display: flex;
   flex-wrap: wrap;
-  /* display: none; */
+
 }
 .active_lists .active {
   margin: 0 0.025rem 0.15rem 0;
