@@ -36,13 +36,13 @@ export default {
 
 
 <style>
-    .footer {
+.footer {
     height: 1.5rem;
     width: 100%;
     padding-top:.1rem;
     box-sizing: border-box;
-    box-shadow: 0 -20px 15px -9px #f4f4f4 inset;
-    background: #d3d3d3;
+	background: #ccc;
+	padding:.2rem 0;
     /* position: absolute; */
     bottom: 0;
 }

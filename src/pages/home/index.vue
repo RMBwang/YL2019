@@ -40,7 +40,6 @@
         <router-link tag="p" to="/home/homeRecommend" >推荐</router-link>
         <router-link tag="p" to="/home/homeVenue">场馆</router-link>
       </h3>
-
       <!-- 二级路由 -->
       <router-view></router-view>
       <!-- <HomeRecommend></HomeRecommend> -->
@@ -52,14 +51,7 @@
 </template>
 
 
-<script>
-// import HomeRecommend from "@components/homeRecommend";
-// import HomeVenue from "@components/homeVenue";
-export default {
-  name: "Home",
-  components: {
 
-    // HomeRecommend,
     // HomeVenue
   },
   data() {

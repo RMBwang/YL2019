@@ -2,7 +2,7 @@
   <div class="homeRecommend">
     <ul class="active_lists">
 
-      <li class="active" v-for="(item,index) in homeRecommendList" :key="index">
+      <router-link tag="li" :to="'ticket-'+item.URL+'.html'" class="active" v-for="(item,index) in homeRecommendList" :key="index">
         <a href>
           <img
             :src='"http://static.228.cn/"+item.PBIGIMG'
@@ -14,8 +14,7 @@
             <b class="red">￥{{item.MINPRICE}}</b>起
           </span>
         </a>
-      </li>
-
+      </router-link>
       <div class="load_more">
         <a href>查看更多</a>
       </div>
