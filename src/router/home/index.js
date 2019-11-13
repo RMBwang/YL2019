@@ -7,6 +7,10 @@ export default {
     },
     children:[
         {
+            path:"/home",
+            redirect:"homeRecommend"
+        },
+        {
             path:"homeRecommend",
             component:_=>import("@components/homeRecommend"),
             name:"homeRecommend",
@@ -21,6 +25,14 @@ export default {
             meta:{
                 flag:true
             },
-        }
+        },
+        // {
+        //     path:"search",
+        //     component:_=>import("@pages/search"),
+        //     name:"search",
+        //     meta:{
+        //         flag:true
+        //     }
+        // }
     ]
 }

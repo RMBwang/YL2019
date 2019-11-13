@@ -61,8 +61,9 @@ export default {};
 </script>
 
 
-<style>
-.all {
+
+<style >
+  .all {
   height: 100%;
   width: 100%;
   background: url("http://m2static.228.cn/images/loginBg.jpg") no-repeat center;
@@ -187,4 +188,6 @@ button {
   cursor: pointer;
   vertical-align: middle;
 }
+
 </style>
+
