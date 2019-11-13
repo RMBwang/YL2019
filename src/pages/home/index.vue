@@ -42,8 +42,8 @@
         <p>推荐</p>
         <p>场馆</p>
       </h3>
-        <!-- <HomeRecommend></HomeRecommend> -->
-        <HomeVenue></HomeVenue>
+        <HomeRecommend></HomeRecommend>
+        <!-- <HomeVenue></HomeVenue> -->
 
 
       <Center />
@@ -53,14 +53,14 @@
 
 
 <script>
-// import HomeRecommend from "@components/homeRecommend";
-import HomeVenue from "@components/homeVenue";
+import HomeRecommend from "@components/homeRecommend";
+// import HomeVenue from "@components/homeVenue";
 export default {
   name: "Home",
    components: {
     // TabBar,
-    // HomeRecommend,
-    HomeVenue
+    HomeRecommend,
+    // HomeVenue
   },
   data(){
       return {
