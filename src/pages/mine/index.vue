@@ -1,4 +1,5 @@
-<template>
+<template
+>
     <div>
         <Header title="我的" />
     </div>

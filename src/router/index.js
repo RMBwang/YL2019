@@ -2,8 +2,7 @@ import Vue from "vue"
 import VueRouter from "vue-router";
 import home from "./home"//引入home
 import category from "./category"//引入category分类
-import talkingShow from "./talkingShow"//永乐说
-import city from "./city"
+import talkingShow from "./talkingShow";//永乐说
 Vue.use(VueRouter);
 
 
@@ -18,7 +17,7 @@ const router = new VueRouter({
         home,//主页
         category,//分类
         talkingShow,//永乐说
-        city,
+
         {
             path: "/search",
             name: "search",
