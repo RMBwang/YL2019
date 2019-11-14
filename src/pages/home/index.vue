@@ -8,110 +8,112 @@
     </router-link>
 
     <div class="container">
-      
-      
       <!-- 轮播图 -->
+      
       <div class="slider">
-        <div class="banner">
-          <div class="logo">
-            <a href>
-              <img src="http://static.228.cn/upload/2019/11/07/1573122606412_i5e9.jpg" />
-            </a>
-          </div>
-        </div>
-        <!-- 五个小圆点 -->
-        <div class="dot"></div>
+        <van-swipe :autoplay="3000">
+          <van-swipe-item v-for="(image, index) in slideList" :key="index">
+            <img v-lazy="'http://static.228.cn'+image.IMG" class="sliderImg"/>
+          </van-swipe-item>
+        </van-swipe>
       </div>
+      
 
       <!-- 八个标题 -->
 
       <div class="title_nav">
         <ul class="title_nav-lists">
           <li class="title_lists-one">
-            <div class="title-list" v-for="(item,index) in titles" :key="index.id">
+            <router-link tag="div" :to="item.route" class="title-list" v-for="(item,index) in titles" :key="index.id">
               <p class="iconfont icon" v-html="item.icon"></p>
               <p class="word">{{item.title}}</p>
-            </div>
+            </router-link>
           </li>
         </ul>
       </div>
 
       <h3 class="con_til">
-        <router-link tag="p" to="/home/homeRecommend" >推荐</router-link>
+        <router-link tag="p" to="/home/homeRecommend">推荐</router-link>
         <router-link tag="p" to="/home/homeVenue">场馆</router-link>
       </h3>
       <!-- 二级路由 -->
-      <router-view></router-view>
-      <!-- <HomeRecommend></HomeRecommend> -->
-      <!-- <HomeVenue></HomeVenue> -->
-
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
       <Center />
     </div>
   </div>
 </template>
 
 <script>
-import {homeRecommendApi} from "@api/home";
+import { homeRecommendApi, sliderApi } from "@api/home";
 export default {
-  name:"Home",
-  components:{
-    // HomeRecommend,
-    // HomeVenue
-  },
-  methods:{
-    
-  },
+  name: "Home",
   data() {
     return {
+      slideList: [],
       titles: [
         {
           id: 0,
           title: "演唱会",
-          icon: "&#xe608;"
+          icon: "&#xe608;",
+          route:"/category/yanchanghui",
         },
         {
           id: 1,
           title: "话剧舞台剧",
-          icon: "&#xe60b;"
+          icon: "&#xe60b;",
+          route:"/category/huajuwutaiju",
         },
         {
           id: 2,
           title: "体育赛事",
-          icon: "&#xe6c0;"
+          icon: "&#xe6c0;",
+          route:"/category/tiyusaishi",
         },
         {
           id: 3,
           title: "儿童亲子",
-          icon: "&#xe629;"
+          icon: "&#xe629;",
+          route:"/category/ertongqinzi",
         },
         {
           id: 4,
           title: "全部分类",
-          icon: "&#xe50b;"
+          icon: "&#xe50b;",
+          route:"/category",
         },
         {
           id: 5,
           title: "活动",
-          icon: "&#xe685;"
+          icon: "&#xe685;",
+          route:"/activity",
         },
         {
           id: 6,
           title: "永乐说",
-          icon: "&#xe699;"
+          icon: "&#xe699;",
+          route:"/talkingShow",
         },
         {
           id: 7,
           title: "我的",
-          icon: "&#xe504;"
+          icon: "&#xe504;",
+          route:"/login",
         }
       ]
     };
+  },
+  async created() {
+    let data = await sliderApi();
+    // console.log(data);
+    this.slideList = data.data.slideList;
+    console.log(this.slideList);
   }
 };
 </script>
 
 <style>
-
 .city {
   height: 0.4rem;
   line-height: 0.4rem;
@@ -147,6 +149,9 @@ export default {
   position: relative;
 }
 
+.sliderImg{
+  width:100%;height:100%;
+}
 .slider .banner {
   width: 100%;
   height: 100%;
@@ -213,13 +218,11 @@ export default {
 .con_til p:nth-child(1) {
   margin-right: 0.15rem;
 }
-.con_til p{
- 
+.con_til p {
   color: #b5bbc1;
 }
-.con_til .router-link-active{
+.con_til .router-link-active {
   color: #000;
- 
 }
 </style>
 

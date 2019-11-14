@@ -4,8 +4,11 @@ import home from "./home"//引入home
 import category from "./category"//引入category分类
 import talkingShow from "./talkingShow"//永乐说
 import city from "./city"
+import { Swipe, SwipeItem } from 'vant';
+import { Lazyload } from 'vant';
 Vue.use(VueRouter);
-
+Vue.use(Swipe).use(SwipeItem);
+Vue.use(Lazyload);
 
 
 const router = new VueRouter({
@@ -30,19 +33,27 @@ const router = new VueRouter({
                 flag: true
             },
             component: _ => import("@pages/search")
-            //箭头函数不传参()可以写成_
+        },
+        //activity
+        {
+            path: "/activity",
+            name: "activity",
+            meta: {
+                flag: true
+            },
+            component: _ => import("@pages/activity"),
+            
         },
         {
             path: "/details/:id",
             name: "details",
             meta: {
-                flag: true
+                flag: false
             },
             props:true,
-            component: _ => import("@pages/details")
+            component: _ => import("@pages/details"),
             //箭头函数不传参()可以写成_
         },
-        
         {
             path: "/mine",
             name: "mine",

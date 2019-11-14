@@ -1,10 +1,11 @@
 <template>
+  <div class="allDetails">
   <div class="details">
-    <div class="head">
+    <div class="headTop">
       <div class="headBg">
-        <div class="bg"></div>
+        <div class="bg" :style="'background:url(http://static.228.cn'+details.PBIGIMG+')'"></div>
       </div>
-      <div class="container">
+      <div class="containerOne">
         <div class="headIcon">
           <div class="iconfont">&#xe501;</div>
           <div class="iconRight">
@@ -12,76 +13,38 @@
             <div class="iconfont">&#xe936;</div>
           </div>
         </div>
-        <div class="content">
+        <div class="contentTwo">
           <img
-            src="http://static.228.cn/upload/2019/11/08/AfterTreatment/1573194546388_l5c2-0.jpg"
+            :src="'http://static.228.cn'+details.PBIGIMG"
             class="contentImg"
           />
-          <!-- http://static.228.cn/upload/2019/11/08/AfterTreatment/1573194546388_l5c2-0.jpg -->
           <div class="contentRight">
-            <div class="contentName">【双十一活动专属】YEO JIN GOO MOONLIGHT FAN MEETING IN MACAU CHINA</div>
+            <div class="contentName">{{details.NAME}}</div>
             <div class="contentLimit">实名观演</div>
             <div class="contentMoney">￥ 22.8</div>
           </div>
         </div>
       </div>
       <!-- 温馨提示 -->
-      <div class="tips">
-        <div
-          class="tipsLimit"
-        >【温馨提示】本演出将于11月11日11:11开启售票，建议您提前注册、登录永乐票务网站或客户端，便于第一时间秒杀成功；为了保证您能够更顺利购票，请下载最新版本的APP(版本号：V3.6.5)；</div>
-        <div class="all">
-          <div class="tipsLeft">
-            <div class="tipsTime">
-              <i class="iconfont">&#xe502;</i>
-              <span>2019.11.17</span>
-            </div>
-            <div class="tipsPosition">
-              <i class="iconfont">&#xe791;</i>
-              <span>澳门老百汇</span>
-            </div>
-          </div>
-          <div class="tipsRight">></div>
-        </div>
+      <div class="tips" v-html="details.SPECIAL">
       </div>
       <!-- 注意事项 -->
       <div class="care">
         <h3>注意事项</h3>
-        <div class="careDetails">
-          a)演出详情仅供参考，具体信息以现场为准；
-          <br />b)1.2米以下儿童谢绝入场，1.2米以上儿童需持票入场；
-          <br />c)演出票品具有唯一性、时效性等特殊属性，如非活动变更、活动取消、票品错误的原因外，不提供退换票品服务，购票时请务必仔细核对并审慎下单。
-          <br />d)需要开具发票的购票客户，请您在演出/活动开始5天前提供相关发票信息至在线客服，演出/活动结束后将统一由演出/活动主办单位开具增值税发票。
+        <div class="careDetails" v-html="details.PRECAUTIONS">
         </div>
       </div>
       <!-- 公告 -->
       <div class="notice">
         <h3>购票公告</h3>
-        <div class="noticeTips">【温馨提示】</div>
-        <p>
-          1.本演出将于
-          <span>XX月XX日</span>开启售票；
-        </p>
-        <p>
-          2.本演出
-          <span>不支持银行转账</span> 的购票方式
-        </p>
-        <p>
-          3.为尽可能地保证公平，让更多歌迷朋友买到心仪的价位，购票下单后
-          <span>15分钟内</span>未支付将被取消订单回滚库存；大家可密切刷新网页进行购买；
-        </p>
-        <p>4.部分银行信用卡网上支付有限额，请大家提前跟卡片所属银行核实限额，以免耽误付款；</p>
-        <p>5.为了确保广大观众的利益，对于异常订购行为，永乐票务有权取消相应订单！（同一注册ID、同一收货地址及姓名、同一手机号、同一支付方式账号、同一版本号信息购买设备均视为异常购票行为）</p>
-        <p>6.同一订单同等价位门票确保连座；</p>
-        <p>
-          7.抢票前请在“我的永乐-收货地址”中维护好准确的收货地址，以便后期更快收到您的票品；
-          <span>抢票成功后将不支持修改配送方式及收货地址。</span>
-        </p>
+        <div class="tipsTwo" v-html="details.BUY_AFFICHE"></div>
       </div>
       <!-- 演出详情 -->
-      <div class="showDetails"></div>
+      <div class="showDetails" v-html="details.INTRODUCTION"></div>
       <!-- buy -->
     </div>
+    <Center/>
+  </div>
     <div class="buy">
       <div class="iconfont customer">&#xe62b;</div>
       <div class="buyNow">立即购买</div>
@@ -91,50 +54,43 @@
 
 <script>
 import {detailsApi} from "@api/details"
+import Center from "@common/components/center/index.vue"
 export default {
     name:"Details",
     props:["id"],
+    components:{
+      Center,
+    },
     data(){
       return {
-        details:""
+        details:{},
       }
     },
     async created(){
-      let data=await detailsApi();
-      console.log(data);
+      let data=await detailsApi(this.id);
+      this.details=data.data.product;
+      console.log(this.details);
     }
     
 };
 </script>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-}
 
-html,
-body {
+.allDetails {
   height: 100%;
   width: 100%;
   background: #eee;
 }
 
-html {
-  font-size: 32vw;
-}
-
-body {
-  font-size: 0.16rem;
-}
 .details {
   width: 100%;
   height: 100%;
+  overflow: auto;
+  padding-bottom: .4rem;
 }
-.head {
+.headTop {
   width: 100%;
-  height: 2rem;
-  margin-bottom: 0.2rem;
   position: relative;
 }
 
@@ -142,7 +98,7 @@ body {
   height: 1.8rem;
   position: absolute;
   overflow: hidden;
-  top: -0.2rem;
+  top: -0.5rem;
   left: -75%;
   width: 250%;
   border-radius: 50%;
@@ -154,10 +110,12 @@ body {
   width: 100%;
   height: 2.5rem;
   position: absolute;
-  background: url("http://static.228.cn/upload/2019/11/08/AfterTreatment/1573194546388_l5c2-0.jpg");
+  filter: blur(10px);
+  background-position: center;
+  overflow: hidden;
 }
 
-.container {
+.containerOne {
   position: relative;
 }
 
@@ -187,7 +145,7 @@ body {
   background: #ccc;
 }
 
-.content {
+.contentTwo {
   margin-left: 0.2rem;
   margin-right: 0.2rem;
   display: flex;
@@ -195,7 +153,7 @@ body {
   align-items: center;
 }
 
-.content .contentImg {
+.contentTwo .contentImg {
   height: 1.3rem;
   width: 1rem;
   display: block;
@@ -296,8 +254,20 @@ body {
   color: #7b8187;
 }
 
+.showDetails{
+  margin-left:.2rem;
+  margin-right:.2rem;
+}
+.showDetails img{
+  width:100%;height:100%;
+}
+
+
 .notice {
   padding: 0.2rem;
+}
+.notice h3{
+  margin-bottom: .1rem;
 }
 
 .buy {
@@ -307,7 +277,7 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  position: sticky;
+  position: fixed;
   left: 0;
   bottom: 0;
   background: #fff;
@@ -321,6 +291,7 @@ body {
   text-align: center;
   color: #ff2959;
   background: #fff;
+  box-shadow: 0px 3px 8px 0px rgba(255, 58, 86, 0.2);
 }
 
 .buyNow {
