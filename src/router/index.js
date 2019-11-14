@@ -15,6 +15,10 @@ const router = new VueRouter({
             path: "/",
             redirect: "/home"
         },
+        {
+            path:"/home/details/:id",
+            redirect:"/details/:id",
+        },
         home,//主页
         category,//分类
         talkingShow,//永乐说
@@ -28,6 +32,17 @@ const router = new VueRouter({
             component: _ => import("@pages/search")
             //箭头函数不传参()可以写成_
         },
+        {
+            path: "/details/:id",
+            name: "details",
+            meta: {
+                flag: true
+            },
+            props:true,
+            component: _ => import("@pages/details")
+            //箭头函数不传参()可以写成_
+        },
+        
         {
             path: "/mine",
             name: "mine",

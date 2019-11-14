@@ -50,9 +50,16 @@
   </div>
 </template>
 
-
-
+<script>
+import {homeRecommendApi} from "@api/home";
+export default {
+  name:"Home",
+  components:{
+    // HomeRecommend,
     // HomeVenue
+  },
+  methods:{
+    
   },
   data() {
     return {

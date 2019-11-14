@@ -2,8 +2,8 @@
   <div class="homeRecommend">
     <ul class="active_lists">
 
-      <router-link tag="li" :to="'ticket-'+item.URL+'.html'" class="active" v-for="(item,index) in homeRecommendList" :key="index">
-        <a href>
+      <router-link tag="li" :to="'details/'+item.URL" @click="handleSend(item.URL)" class="active" v-for="(item,index) in homeRecommendList" :key="index">
+        
           <img
             :src='"http://static.228.cn/"+item.PBIGIMG'
             alt
@@ -13,7 +13,7 @@
           <span class="tp">
             <b class="red">￥{{item.MINPRICE}}</b>起
           </span>
-        </a>
+      
       </router-link>
       <div class="load_more">
         <a href>查看更多</a>
@@ -24,6 +24,8 @@
 
 <script>
 import {homeRecommendApi} from "@api/home";
+import {detailsApi} from "@api/details";
+
 export default {
   name:"homeRecommend",
   data(){
@@ -31,10 +33,12 @@ export default {
       homeRecommendList:[],
     }
   },
+  
   async created(){
     let data=await homeRecommendApi();
-    console.log(data);
+    // console.log(data);
     this.homeRecommendList=data.data.recommendPage.list;
+    
   }
 };
 </script>
@@ -53,16 +57,13 @@ export default {
   width: 32%;
   overflow: hidden;
 }
-.active_lists .active a {
-  width: 100%;
-  height: 100%;
-}
-.active_lists .active a img {
+
+.active_lists .active img {
   /* height: 1.4rem; */
   width: 100%;
   border-radius: 0.1rem;
 }
-.active_lists .active a .name {
+.active_lists .active .name {
   font-size: 0.13rem;
   height: 0.34rem;
   line-height: 0.18rem;
@@ -72,17 +73,17 @@ export default {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
-.active_lists .active a .shijian {
+.active_lists .active .shijian {
   font-size: 0.11rem;
   color: #999;
   display: block;
 }
-.active_lists .active a .tp {
+.active_lists .active .tp {
   margin-top: 0.02rem;
   font-size: 0.1rem;
   color: #b5bbc1;
 }
-.active_lists .active a .tp .red {
+.active_lists .active .tp .red {
   color: #ff3a56;
   font-size: 0.13rem;
   margin-right: 0.05rem;

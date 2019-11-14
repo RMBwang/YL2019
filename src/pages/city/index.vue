@@ -14,62 +14,15 @@
             <div class="populor city_hot">
                 <ul>
                     <li class="local">全国</li>
-                    <li class="local">全国</li>
-                    <li class="local">全国</li>
-                    <li class="local">全国</li>
-                    <li class="local">全国</li>
-                    <li class="local">全国</li>
-                    <li class="local">全国</li>
-                    <li class="local">全国</li>
-                    <li class="local">全国</li>
+                    <li class="local" v-for="(item,index) in cityhotList" :key="index.id">{{item.JXNAME}}</li>
+                   
                 </ul>
             </div>
             <h4 class="gray9 f12 city_tit">更多城市</h4>
             <div class="more_city city_hot">
                 <ul>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
-                    <li class="local">澳门</li>
+                    <li class="local" v-for="(item,index) in cityfList" :key="index">{{item.JXNAME}}</li>
+                   
                 </ul>
             </div>
         </div>
@@ -80,8 +33,23 @@
 
 
 <script>
+import {cityAllApi} from "@api/city"
 export default {
     name:"city",
+    data(){
+       return {
+           cityhotList:[],
+           cityfList:[]
+       }
+    },
+    async created(){
+        let data=await cityAllApi();
+        // console.log(data.data.hotCitys)
+        // console.log(data.data.fcitys);
+        this.cityhotList=data.data.hotCitys;
+        this.cityfList=data.data.fcitys
+    }
+
     
 
 }
@@ -94,8 +62,6 @@ export default {
     height: 100%;
     background: #fff;
 }
-
-
 /* localtion_city */
 .position_city{
     position: absolute;
@@ -108,6 +74,7 @@ export default {
 }
 .gray9 .localtion{
     color: #999;
+    margin-right: .1rem
 }
 .hong{
     color: #c33;
