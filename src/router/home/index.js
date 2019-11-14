@@ -26,13 +26,6 @@ export default {
                 flag:true
             },
         },
-        // {
-        //     path:"search",
-        //     component:_=>import("@pages/search"),
-        //     name:"search",
-        //     meta:{
-        //         flag:true
-        //     }
-        // }
+       
     ]
 }

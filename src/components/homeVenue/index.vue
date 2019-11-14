@@ -21,15 +21,23 @@ export default {
       homeVenueList: []
     };
   },
-  async created(){
-    //   alert(111)
-      let data=await homeVenueApi();
-    //   console.log(data);
+  created() {
+    this.handelGetvenue(1)
+    
+  },
+  activated(){
+    this.handelGetvenue(this.$store.state.city.cs)
+  },
+
+  methods:{
+    async handelGetvenue(cs){
+
+      let data=await homeVenueApi(cs);
+
       this.homeVenueList=data.data.venuePage.list;
-      console.log(this.homeVenueList)
-     
-      
+      }
   }
+ 
 };
 </script>
 

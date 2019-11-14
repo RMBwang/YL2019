@@ -31,15 +31,24 @@ export default {
   data(){
     return {
       homeRecommendList:[],
+      cityId:'bj'
+    }
+  },
+  created() {
+    this.handelGetRecommend("bj")
+  },
+  activated(){
+    this.handelGetRecommend(this.$store.state.city.cityId)
+  },
+  methods:{
+    async handelGetRecommend(cityId){
+      let data=await homeRecommendApi(cityId);
+      this.homeRecommendList=data.data.recommendPage.list;
+
     }
   },
   
-  async created(){
-    let data=await homeRecommendApi();
-    // console.log(data);
-    this.homeRecommendList=data.data.recommendPage.list;
-    
-  }
+  
 };
 </script>
 

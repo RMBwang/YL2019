@@ -6,6 +6,5 @@ import http from "@utils/request";
 export const cityAllApi=()=>http({
     method:"get",
     url:"/server/content/city/list.json",
-    data:{
-    }
+
 });

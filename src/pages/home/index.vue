@@ -2,8 +2,8 @@
 <template>
   <div class="page">
     <Header title="永乐票务" search />
-    <router-link tag="div" to="/city" class="city">
-      <span>全国</span>
+    <router-link tag="div" :to="'/city?path='+$route.path" class="city">
+      <span>{{this.$store.state.city.nm}}</span>
       <i class="iconfont">&#xe619;</i>
     </router-link>
 
@@ -41,9 +41,11 @@
         <router-link tag="p" to="/home/homeVenue">场馆</router-link>
       </h3>
       <!-- 二级路由 -->
-      <router-view></router-view>
-      <!-- <HomeRecommend></HomeRecommend> -->
-      <!-- <HomeVenue></HomeVenue> -->
+      <keep-alive>
+          <router-view></router-view>
+      </keep-alive>
+      
+
 
       <Center />
     </div>
@@ -54,13 +56,7 @@
 import {homeRecommendApi} from "@api/home";
 export default {
   name:"Home",
-  components:{
-    // HomeRecommend,
-    // HomeVenue
-  },
-  methods:{
-    
-  },
+
   data() {
     return {
       titles: [

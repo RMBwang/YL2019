@@ -13,7 +13,8 @@ const router = new VueRouter({
     routes: [
         {
             path: "/",
-            redirect: "/home"
+            redirect: "/home",
+           
         },
         {
             path:"/home/details/:id",
@@ -36,13 +37,12 @@ const router = new VueRouter({
             path: "/details/:id",
             name: "details",
             meta: {
-                flag: true
+                flag: false
             },
             props:true,
             component: _ => import("@pages/details")
             //箭头函数不传参()可以写成_
         },
-        
         {
             path: "/mine",
             name: "mine",
