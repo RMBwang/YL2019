@@ -1,11 +1,11 @@
 import http from "@utils/request";
 
 
-export const detailsApi=(pid=633053863)=>http({
+export const detailsApi=(id)=>http({
     method:"get",
-    url:"/server/product/getProductStatus.json",
+    
+    url:"/server/product/ticket-"+id+".json?pid="+id+".html",
     data:{
-        nc:30,
-        pid:pid,
+        
     }
 });

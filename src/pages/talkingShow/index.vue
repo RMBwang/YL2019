@@ -3,54 +3,57 @@
     <Header title="永乐说" icon />
     <div class="container">
       <div class="slider">
-        <!-- 此处为轮播图，先用一张图片代替 -->
-        <img src="http://static.228.cn/upload/2018/12/05/1543981140805_d3x7.png" class="sliderImg" />
+        <van-swipe :autoplay="3000">
+          <van-swipe-item v-for="(image, index) in focusImgList" :key="index">
+            <img v-lazy="'http://static.228.cn'+image.IMG" class="sliderImg" />
+          </van-swipe-item>
+        </van-swipe>
       </div>
       <div class="news">
         <div class="newsList" v-for="(item,index) in showList" :key="index">
           <div class="newsTop">
-            <img :src="'//static.228.cn'+item.IMG" class="newsTopImg"/>
+            <img :src="'//static.228.cn'+item.IMG" class="newsTopImg" />
             <div class="right">
               <div class="newsTitle">{{item.REMARK}}</div>
               <div class="newsTime">2019-12-12</div>
             </div>
           </div>
-          <hr/>
+          <hr />
           <div class="details">{{item.TEXT}}</div>
         </div>
       </div>
       <div class="open">展开更多</div>
-      <Center/>
+      <Center />
     </div>
   </div>
 </template>
 
 <script>
-
 import { talkingShowApi } from "@api/talkingShow";
 import Center from "@common/components/center";
 export default {
   name: "TalkingShow",
-  components:{
-    Center,
+  components: {
+    Center
   },
   data() {
     return {
-      showList: []
+      showList: [],
+      focusImgList:[],
     };
   },
   async created() {
     let data = await talkingShowApi();
-    console.log(data);
     this.showList = data.data.sxList;
-    console.log(this.showList);
+    this.focusImgList=data.data.focusImgList;
+    console.log(this.focusImgList);
   }
 };
 </script>
 
 <style>
-.page{
-  background: #F5F6F7;
+.page {
+  background: #f5f6f7;
 }
 
 .slider {
@@ -73,7 +76,7 @@ export default {
   width: 100%;
   background: #fff;
   margin-bottom: 0.15rem;
-  border-radius: .08rem;
+  border-radius: 0.08rem;
 }
 .newsTop {
   padding: 0.15rem;
@@ -101,12 +104,13 @@ export default {
   font-size: 0.1rem;
   color: #ccc;
 }
-hr{
-  margin-left:.15rem;margin-right:.15rem;
+hr {
+  margin-left: 0.15rem;
+  margin-right: 0.15rem;
 }
 .details {
-  margin-left:.15rem;
-  margin-right:.15rem;
+  margin-left: 0.15rem;
+  margin-right: 0.15rem;
   font-size: 0.11rem;
   margin-top: 0.1rem;
   overflow: hidden;
@@ -115,7 +119,14 @@ hr{
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
-.open{
-  height:.3rem;margin-left:.15rem;margin-right:.15rem;background:#fff7f7;text-align: center;line-height: .3rem;font-size: .12rem;color:#c33;
+.open {
+  height: 0.3rem;
+  margin-left: 0.15rem;
+  margin-right: 0.15rem;
+  background: #fff7f7;
+  text-align: center;
+  line-height: 0.3rem;
+  font-size: 0.12rem;
+  color: #c33;
 }
 </style>
