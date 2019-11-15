@@ -2,7 +2,8 @@
 <template>
   <div class="page">
     <Header title="永乐票务" search />
-    <router-link tag="div" :to="'/city?path='+$route.path" class="city">
+
+    <router-link tag="div" :to="'/city'" class="city">
       <span>{{this.$store.state.city.nm}}</span>
       <i class="iconfont">&#xe619;</i>
     </router-link>
@@ -111,13 +112,17 @@ export default {
 .city {
   height: 0.4rem;
   line-height: 0.4rem;
-  position: relative;
+  position: absolute;
   text-align: center;
   color: #fff;
   font-size: 0.12rem;
   white-space: nowrap;
   margin-left: 0.1rem;
   display: inline-block;
+  left: 20px;
+  top:197px;
+  z-index: 9999;
+  color: red;
 }
 
 .city span {

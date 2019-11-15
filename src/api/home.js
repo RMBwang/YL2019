@@ -19,8 +19,8 @@ export const homeVenueApi=(cs)=>http({
     method:"get",
     url:"/server/content/moreProductPlay.json",
     data:{
-        fcity:-1,
-        pageNum:cs,
+        fcity:cs,
+        pageNum:1,
         type:1
     }
 })
