@@ -7,7 +7,7 @@
       </div>
       <div class="containerOne">
         <div class="headIcon">
-          <div class="iconfont">&#xe501;</div>
+          <v-touch tag="div" @tap="handelBack()" class="iconfont">&#xe501;</v-touch>
           <div class="iconRight">
             <div class="iconfont">&#xe503;</div>
             <div class="iconfont">&#xe936;</div>
@@ -67,9 +67,19 @@ export default {
       }
     },
     async created(){
+      // let data=await detailsApi();
+      // console.log(data);
       let data=await detailsApi(this.id);
       this.details=data.data.product;
       console.log(this.details);
+    },
+    methods:{
+      handelBack(){
+
+        let path = this.$route.query.path || "/home";
+        this.$router.push(path);
+      },
+      
     }
     
 };

@@ -2,7 +2,6 @@
   <div id="header">
     <v-touch @tap="handelBack()" class="left_icon" v-if="icon">
       <i class="iconfont">&#xe501;</i>
-      
     </v-touch>
 
 
@@ -37,7 +36,7 @@ export default {
   methods: {
     handelBack() {
       this.$router.back();
-      // alert(111)
+
     }
   }
 };

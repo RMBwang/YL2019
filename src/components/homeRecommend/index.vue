@@ -2,7 +2,7 @@
   <div class="homeRecommend">
     <ul class="active_lists">
 
-      <router-link tag="li" :to="'/details/'+item.URL" class="active" v-for="(item,index) in homeRecommendList" :key="index">
+      <router-link tag="li" :to="'details/'+item.URL" @click="handleSend(item.URL)" class="active" v-for="(item,index) in homeRecommendList" :key="index">
         
           <img
             :src='"http://static.228.cn/"+item.PBIGIMG'
@@ -24,6 +24,7 @@
 
 <script>
 import {homeRecommendApi} from "@api/home";
+import {detailsApi} from "@api/details";
 
 export default {
   name:"homeRecommend",
@@ -33,11 +34,21 @@ export default {
     }
   },
   
-  async created(){
-    let data=await homeRecommendApi();
-    // console.log(data);
-    this.homeRecommendList=data.data.recommendPage.list;
-  }
+  created() {
+    this.handelGetRecommend("bj")
+  },
+  activated(){
+    this.handelGetRecommend(this.$store.state.city.cityId)
+  },
+  methods:{
+    async handelGetRecommend(cityId){
+      let data=await homeRecommendApi(cityId);
+      this.homeRecommendList=data.data.recommendPage.list;
+
+    }
+  },
+  
+  
 };
 </script>
 

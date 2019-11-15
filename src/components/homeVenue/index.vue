@@ -21,6 +21,7 @@ export default {
       homeVenueList: []
     };
   },
+<<<<<<< HEAD
   async created(){
     //   alert(111)
       let data=await homeVenueApi();
@@ -30,6 +31,25 @@ export default {
      
       
   }
+=======
+  created() {
+    this.handelGetvenue(1)
+    
+  },
+  activated(){
+    this.handelGetvenue(this.$store.state.city.cs)
+  },
+
+  methods:{
+    async handelGetvenue(cs){
+
+      let data=await homeVenueApi(cs);
+
+      this.homeVenueList=data.data.venuePage.list;
+      }
+  }
+ 
+>>>>>>> master
 };
 </script>
 
