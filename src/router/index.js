@@ -45,6 +45,24 @@ const router = new VueRouter({
             
         },
         {
+            path: "/tsDetail",
+            name: "tsDetail",
+            meta: {
+                flag: true
+            },
+            component: _ => import("@pages/tsDetail"),
+        },
+        {
+            path: "/activity/:name",
+            name: "activityDetail",
+            meta: {
+                flag: false
+            },
+            props:true,
+            component: _ => import("@pages/activityDetail"),
+            
+        },
+        {
             path: "/details/:id",
             name: "details",
             meta: {

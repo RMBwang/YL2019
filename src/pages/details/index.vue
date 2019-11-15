@@ -187,7 +187,6 @@ export default {
 }
 
 .tips {
-  height: 1.2rem;
   margin: 0.2rem;
   border-radius: 0.08rem;
   background: #fff;

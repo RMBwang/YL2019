@@ -21,7 +21,7 @@
         <div class="container">
             <div class="main">
             <ul class="goods_lists">
-                <li v-for="(item,index) in categoryList " :key="index.id">
+                <router-link tag="li" :to="'/details/'+item.productid" v-for="(item,index) in categoryList " :key="index.id">
                     
                         <div class="left">
                             <img :src="'//static.228.cn'+item.pbigimg">
@@ -36,7 +36,7 @@
                             </span>
                         </div>
                     
-                </li>
+                </router-link>
  
                 <div class="loard_more">
                     <a href="">查看更多</a>
