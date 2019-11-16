@@ -1,9 +1,9 @@
 <template>
   <div class="activityDetail">
     <div class="hezi">
-      <div class="headBg">
+      <div class="headBg1">
         <div class="iconfont icon" @click="handleBack()">&lt;</div>
-        <div class="bg" :style="'background:url(http://static.228.cn'+news[0].PBIGIMG+')'"></div>
+        <div class="bg1" :style="'background:url(http://static.228.cn'+news[0].PBIGIMG+')'"></div>
       </div>
     </div>
     <div class="detailName">{{detailsNews}}</div>
@@ -92,7 +92,7 @@ html {
   position: absolute;
   top:.6rem;z-index: 20;left:2.5rem;
 }
-.headBg {
+.headBg1 {
   height: 2rem;
   position: relative;
   overflow: hidden;
@@ -103,7 +103,7 @@ html {
   overflow: hidden;
 }
 
-.bg {
+.bg1 {
   width: 100%;
   height: 2.5rem;
   background-position: center;
@@ -132,7 +132,6 @@ html {
 }
 .newsTop .newsTopImg {
   height: 1.3rem;
-  width: 1rem;
   display: block;
   border-radius: 0.08rem;
   margin-right: 0.1rem;
