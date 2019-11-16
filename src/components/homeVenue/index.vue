@@ -21,17 +21,6 @@ export default {
       homeVenueList: []
     };
   },
-<<<<<<< HEAD
-  async created(){
-    //   alert(111)
-      let data=await homeVenueApi();
-    //   console.log(data);
-      this.homeVenueList=data.data.venuePage.list;
-      console.log(this.homeVenueList)
-     
-      
-  }
-=======
   created() {
     this.handelGetvenue(1)
     
@@ -49,7 +38,6 @@ export default {
       }
   }
  
->>>>>>> master
 };
 </script>
 

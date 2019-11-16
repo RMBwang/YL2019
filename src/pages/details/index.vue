@@ -165,7 +165,6 @@ export default {
 
 .contentTwo .contentImg {
   height: 1.3rem;
-  width: 1rem;
   display: block;
   border-radius: 0.08rem;
 }

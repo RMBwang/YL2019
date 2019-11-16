@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <keep-alive>
+    <keep-alive :exclude="/Details|ActivityDetail|category/">
       <router-view></router-view>
     </keep-alive>
     <TarBar v-if="$route.meta.flag"/>
