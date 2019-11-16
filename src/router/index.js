@@ -9,6 +9,9 @@ import { Lazyload } from 'vant';
 Vue.use(VueRouter);
 Vue.use(Swipe).use(SwipeItem);
 Vue.use(Lazyload);
+/**下拉菜单 */
+import { DropdownMenu, DropdownItem } from 'vant';
+Vue.use(DropdownMenu).use(DropdownItem);
 
 
 const router = new VueRouter({
@@ -17,11 +20,11 @@ const router = new VueRouter({
         {
             path: "/",
             redirect: "/home",
-           
+
         },
         {
-            path:"/home/details/:id",
-            redirect:"/details/:id",
+            path: "/home/details/:id",
+            redirect: "/details/:id",
         },
         home,//主页
         category,//分类
@@ -35,6 +38,14 @@ const router = new VueRouter({
             },
             component: _ => import("@pages/search")
         },
+        {
+            path: "/cart",
+            name: "cart",
+            meta: {
+                flag: true
+            },
+            component: _ => import("@pages/myCart")
+        },
         //activity
         {
             path: "/activity",
@@ -43,7 +54,37 @@ const router = new VueRouter({
                 flag: true
             },
             component: _ => import("@pages/activity"),
-            
+
+        },
+        {
+            path: "/activity/:name",
+            name: "activityDetail",
+            meta: {
+                flag: true
+            },
+            props: true,
+            component: _ => import("@pages/activityDetail"),
+
+        },
+        {
+            path: "/category/:title",
+            name: "categoryOther",
+            meta: {
+                flag: true
+            },
+            props: true,
+            component: _ => import("@pages/category"),
+
+        },
+        {
+            path: "/tsDetail",
+            name: "tsDetail",
+            meta: {
+                flag: true
+            },
+            props: true,
+            component: _ => import("@pages/tsDetail"),
+
         },
         {
             path: "/details/:id",//动态路由
@@ -79,10 +120,10 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {//守卫
     if (to.path != "/login" && to.meta.requiredAuth) {
-        if(localStorage.getItem("token")){
+        if (localStorage.getItem("token")) {
             next()
-        }else{
-            next({name:"login",params:{to:to.path}})
+        } else {
+            next({ name: "login", params: { to: to.path } })
         }
     } else {
         next()

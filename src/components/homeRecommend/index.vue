@@ -35,6 +35,7 @@ export default {
       cityId: "bj"
     };
   },
+
   created() {
     this.handelGetRecommend("bj");
   },

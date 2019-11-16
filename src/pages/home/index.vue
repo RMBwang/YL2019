@@ -25,7 +25,7 @@
       <div class="title_nav">
         <ul class="title_nav-lists">
           <li class="title_lists-one">
-            <router-link tag="div" :to="item.route" class="title-list" v-for="(item,index) in titles" :key="index.id">
+            <router-link tag="div" :to="item.route" class="title-list" v-for="(item,index) in titles" :key="index.id" @click="handleCategory(item.path)">
               <p class="iconfont icon" v-html="item.icon"></p>
               <p class="word">{{item.title}}</p>
             </router-link>

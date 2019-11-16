@@ -41,6 +41,26 @@
 
 
 <script>
+// import {cityAllApi} from "@api/city"
+// export default {
+//     name:"city",
+//     data(){
+//        return {
+//            cityhotList:[],
+//            cityfList:[]
+//        }
+//     },
+//     async created(){
+//         let data=await cityAllApi();
+//         // console.log(data.data.hotCitys)
+//         // console.log(data.data.fcitys);
+//         this.cityhotList=data.data.hotCitys;
+//         this.cityfList=data.data.fcitys
+//     }
+
+    
+
+// }
 import { mapState } from "vuex";
 export default {
   name: "city",

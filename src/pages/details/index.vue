@@ -45,8 +45,17 @@
         <div class="iconfont customer">&#xe62b;</div>
         <div class="buyNow">{{details.STATUS==1?'立即购买':'立即预定'}}</div>
       </div>
+      <!-- 演出详情 -->
+      <div class="showDetails" v-html="details.INTRODUCTION"></div>
+      <!-- buy -->
     </div>
+    <Center/>
   </div>
+    <!-- <div class="buy">
+      <div class="iconfont customer">&#xe62b;</div>
+      <div class="buyNow">立即购买</div>
+    </div>
+  </div> -->
 </template>
 
 <script>
@@ -85,6 +94,7 @@ export default {
   height: 100%;
   width: 100%;
   background: #eee;
+  overflow: hidden;
 }
 
 .details {
@@ -116,6 +126,8 @@ export default {
   height: 2.5rem;
   position: absolute;
   filter: blur(10px);
+  background-position: center;
+  overflow: hidden;
 }
 
 .containerOne {
@@ -189,12 +201,10 @@ export default {
 }
 
 .tips {
-  height: 1.2rem;
   margin: 0.2rem;
   border-radius: 0.08rem;
   background: #fff;
   padding: 0.1rem;
-  padding-bottom: 0;
 }
 
 .tipsLimit {
