@@ -2,7 +2,7 @@
   <div class="homeRecommend">
     <ul class="active_lists">
 
-      <router-link tag="li" :to="'details/'+item.URL" @click="handleSend(item.URL)" class="active" v-for="(item,index) in homeRecommendList" :key="index">
+      <router-link tag="li" :to="'details/'+item.URL" class="active" v-for="(item,index) in homeRecommendList" :key="index">
         
           <img
             :src='"http://static.228.cn/"+item.PBIGIMG'
@@ -24,7 +24,6 @@
 
 <script>
 import {homeRecommendApi} from "@api/home";
-import {detailsApi} from "@api/details";
 
 export default {
   name:"homeRecommend",

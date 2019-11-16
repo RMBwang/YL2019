@@ -10,7 +10,7 @@
         </van-swipe>
       </div>
       <div class="news">
-        <div class="newsList" v-for="(item,index) in showList" :key="index">
+        <router-link tag="div" to="/tsDetail" class="newsList" v-for="(item,index) in showList" :key="index">
           <div class="newsTop">
             <img :src="'//static.228.cn'+item.IMG" class="newsTopImg" />
             <div class="right">
@@ -20,7 +20,7 @@
           </div>
           <hr />
           <div class="details">{{item.TEXT}}</div>
-        </div>
+        </router-link>
       </div>
       <div class="open">展开更多</div>
       <Center />

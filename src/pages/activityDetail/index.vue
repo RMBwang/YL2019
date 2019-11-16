@@ -2,20 +2,20 @@
    <div class="activityDetail">
         <div class="hezi">
             <div class="headBg">
-                <div class="bg"
-                    style="background:url(http://static.228.cn/upload/2019/10/18/1571388728381_c1t8_m1.jpg!t640x260.jpg)">
+                <div class="bg" v-if="img"
+                    :style="'background:url(http://static.228.cn'+img+')'">
                 </div>
             </div>
         </div>
         <div class="detailName"></div>
         <div class="detailNews"></div>
-        <div class="newsTop">
-            <img src="http://static.228.cn/upload/2019/10/18/1571388728381_c1t8_m1.jpg!t640x260.jpg" class="newsTopImg" />
+        <div class="newsTop" v-for="(item,index) in news" :key="index">
+            <img :src="'http://static.228.cn'+item.PBIGIMG" class="newsTopImg" />
             <div class="right">
-                <div class="newsTitle">2020 张韶涵「寓言」世界巡回演唱会-深圳站</div>
-                <div class="newsTime">2019-12-12</div>
-                <div class="newsPosition">dizhi </div>
-                <div class="newsMoney">100元</div>
+                <div class="newsTitle">{{item.NAME}}</div>
+                <div class="newsTime">{{item.SHOWDATE}}</div>
+                <div class="newsPosition">{{item.VNAME}}</div>
+                <div class="newsMoney">{{item.MINPRICE}}-{{item.MAXPRICE}}元</div>
             </div>
         </div>
     </div>
@@ -28,6 +28,7 @@ export default {
     data(){
         return {
             news:[],
+            img:{},
         }
     },
     props:["name"],
@@ -35,8 +36,8 @@ export default {
         let data=await activityDetailApi(this.name);
         this.news=data.data.subjectProductList;
         console.log(this.news);
+        this.img=data.data.subjectMap.IMG;
     }
-
 }
 </script>
 
@@ -64,6 +65,7 @@ export default {
             height: 100%;
             width: 100%;
             background: #eee;
+            overflow: auto;
         }
 
         .hezi {
@@ -87,7 +89,6 @@ export default {
             width: 100%;
             height: 2.5rem;
             position: absolute;
-            filter: blur(10px);
             background-position: center;
             overflow: hidden;
         }
@@ -125,10 +126,16 @@ export default {
             -webkit-box-orient: vertical;
             margin-bottom: 0.1rem;
         }
-
+        .newsPosition{
+            font-size:.12rem;color:#ccc;margin-bottom: .15rem;
+        }
+        .newsMoney{
+            color:#f00;font-size:.14rem;font-weight: bold;
+        }
         .newsTop .newsTime {
             font-size: 0.1rem;
             color: #ccc;
+            margin-bottom: .05rem;
         }
 
         hr {

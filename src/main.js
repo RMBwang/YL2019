@@ -10,6 +10,5 @@ Vue.config.productionTip = false
 new Vue({
   store,
   router,//并且注入 
-  
   render: h => h(App)
 }).$mount('#app')

@@ -43,10 +43,7 @@
       <div class="showDetails" v-html="details.INTRODUCTION"></div>
       <!-- buy -->
     </div>
-<<<<<<< HEAD
-=======
     <Center/>
->>>>>>> ea3a5a470ccf3da38864e56f1406a976c8ac2f38
   </div>
     <div class="buy">
       <div class="iconfont customer">&#xe62b;</div>
@@ -70,24 +67,16 @@ export default {
       }
     },
     async created(){
-<<<<<<< HEAD
-      let data=await detailsApi();
-      // console.log(data);
+      let data=await detailsApi(this.id);
+      this.details=data.data.product;
+      console.log(this.details);
     },
     methods:{
       handelBack(){
-        // let path=this.$route.query.path;
-        // console.log(path)
-        // this.$router.push(path)
 
         let path = this.$route.query.path || "/home";
         this.$router.push(path);
       }
-=======
-      let data=await detailsApi(this.id);
-      this.details=data.data.product;
-      console.log(this.details);
->>>>>>> ea3a5a470ccf3da38864e56f1406a976c8ac2f38
     }
     
 };
@@ -95,14 +84,11 @@ export default {
 
 <style>
 
-<<<<<<< HEAD
-
-=======
->>>>>>> ea3a5a470ccf3da38864e56f1406a976c8ac2f38
 .allDetails {
   height: 100%;
   width: 100%;
   background: #eee;
+  overflow: hidden;
 }
 
 .details {
@@ -133,12 +119,8 @@ export default {
   height: 2.5rem;
   position: absolute;
   filter: blur(10px);
-<<<<<<< HEAD
-  background: url("http://static.228.cn/upload/2019/11/08/AfterTreatment/1573194546388_l5c2-0.jpg") center;
-=======
   background-position: center;
   overflow: hidden;
->>>>>>> ea3a5a470ccf3da38864e56f1406a976c8ac2f38
 }
 
 .containerOne {
@@ -181,7 +163,6 @@ export default {
 
 .contentTwo .contentImg {
   height: 1.3rem;
-  width: 1rem;
   display: block;
   border-radius: 0.08rem;
 }
@@ -213,12 +194,10 @@ export default {
 }
 
 .tips {
-  height: 1.2rem;
   margin: 0.2rem;
   border-radius: 0.08rem;
   background: #fff;
   padding: 0.1rem;
-  padding-bottom: 0;
 }
 
 .tipsLimit {
