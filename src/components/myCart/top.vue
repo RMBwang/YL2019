@@ -1,51 +1,49 @@
 <template>
-  <div class="top">
+<div class="topAll">
+  <h2 class="shoppingCart">购物车</h2>
+  <div class="topCart">
     <label>
       <input
         type="checkbox"
-        :checked="this.$store.state.selectedAll"
         @change="handleSelectedAllChange()"
       />全选
     </label>
+    <div></div>
+    <div></div>
     <p>商品</p>
     <p>单价</p>
     <p>数量</p>
     <p>小计</p>
     <p>操作</p>
   </div>
+</div>
 </template>
 
 <script>
-import { mapMutations } from "vuex";
 export default {
   name: "top",
   methods: {
-    ...mapMutations({
-      handleSelectedAllChange: "handleSelectedAllChange"
-    })
+   handleSelectedAllChange(){
+     
+   }
   }
 };
 </script>
 
 <style>
-.top {
+.topAll{
+  width:100%;
+  height:.65rem;
+}
+.topCart {
   width: 100%;
-  height: 49px;
+  height:.25rem;
   background: #f3f3f3;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
-.top > p {
-  width: 200px;
-  text-align: center;
-}
-.top > p:nth-child(2) {
-  width: 400px;
-}
-
-.top > label {
-  width: 200px;
-  text-align: center;
+.shoppingCart{
+  color:#f00;text-align: center;line-height:.4rem;
 }
 </style>

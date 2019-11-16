@@ -1,13 +1,20 @@
 <template>
   <div class="activityDetail">
     <div class="hezi">
-      <div class="headBg">
+      <div class="headBg1">
         <div class="iconfont icon" @click="handleBack()">&lt;</div>
-        <div class="bg" :style="'background:url(http://static.228.cn'+news[0].PBIGIMG+')'"></div>
+        <div class="bg1" :style="'background:url(http://static.228.cn'+news[0].PBIGIMG+')'"></div>
       </div>
     </div>
     <div class="detailName">{{detailsNews}}</div>
-    <div class="newsTop" v-for="(item,index) in news" :key="index" v-show="news">
+    <router-link
+      tag="div"
+      :to="'/details/'+item.PRODUCTID"
+      class="newsTop"
+      v-for="(item,index) in news"
+      :key="index"
+      v-show="news"
+    >
       <img :src="'http://static.228.cn'+item.PBIGIMG" class="newsTopImg" />
       <div class="right">
         <div class="newsTitle">{{item.NAME}}</div>
@@ -15,7 +22,7 @@
         <div class="newsPosition">{{item.VNAME}}</div>
         <div class="newsMoney">{{item.MINPRICE}}-{{item.MAXPRICE}}元</div>
       </div>
-    </div>
+    </router-link>
   </div>
 </template>
 
@@ -29,10 +36,10 @@ export default {
       detailsNews: ""
     };
   },
-  methods:{
-      handleBack(){
-          this.$router.back();
-      }
+  methods: {
+    handleBack() {
+      this.$router.back();
+    }
   },
   props: ["name"],
   async created() {
@@ -60,12 +67,12 @@ html {
   font-size: 32vw;
 }
 
-        .activityDetail {
-            height: 100%;
-            width: 100%;
-            background: #eee;
-            overflow: auto;
-        }
+.activityDetail {
+  height: 100%;
+  width: 100%;
+  background: #eee;
+  overflow: auto;
+}
 
 .activityDetail {
   height: 100%;
@@ -90,9 +97,11 @@ html {
   background: #999;
   border-radius: 50%;
   position: absolute;
-  top:.6rem;z-index: 20;left:2.5rem;
+  top: 0.6rem;
+  z-index: 20;
+  left: 2.5rem;
 }
-.headBg {
+.headBg1 {
   height: 2rem;
   position: relative;
   overflow: hidden;
@@ -103,7 +112,7 @@ html {
   overflow: hidden;
 }
 
-.bg {
+.bg1 {
   width: 100%;
   height: 2.5rem;
   background-position: center;
@@ -132,7 +141,6 @@ html {
 }
 .newsTop .newsTopImg {
   height: 1.3rem;
-  width: 1rem;
   display: block;
   border-radius: 0.08rem;
   margin-right: 0.1rem;

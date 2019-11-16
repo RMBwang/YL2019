@@ -1,5 +1,4 @@
-<template
->
+<template>
   <div class="page">
     <Header title="分类" icon search />
     <div class="header_branch">
@@ -37,10 +36,6 @@
             <a href>查看更多</a>
           </div>
         </ul>
-
-        <div class="loard_more">
-          <a href>查看更多</a>
-        </div>
       </div>
     </div>
   </div>
@@ -72,16 +67,8 @@ export default {
 
   created() {
     this.handleGetValue1(this.value1.replace(/["]/g, ""));
-    // console.log(this.value1)
   },
-  // activated(){
-  //    console.log(this.value1)
-  //   if(this.value1){
 
-  //   }else{
-
-  //   }
-  // },
   updated() {
     // console.log(this.value1);
 
@@ -146,6 +133,17 @@ export default {
 }
 .header_branch ul li > i {
   color: #999ea3;
+}
+
+.main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin-top: 0.4rem;
+  overflow: auto;
+  background: #fff;
 }
 
 .main {

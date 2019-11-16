@@ -3,7 +3,9 @@ import App from './App.vue'
 import router from "./router"//引入 
 import VueTouch from "vue-touch"; 
 import "@common/components";
-import store from "./store"
+import store from "./store";
+import Observer from "./observer";
+Vue.prototype.$observer=Observer;
 Vue.use(VueTouch,{name:"v-touch"})
 Vue.config.productionTip = false
 

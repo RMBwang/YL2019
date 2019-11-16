@@ -51,11 +51,6 @@
     </div>
     <Center />
   </div>
-  <!-- <div class="buy">
-      <div class="iconfont customer">&#xe62b;</div>
-      <div class="buyNow">立即购买</div>
-    </div>
-  </div>-->
 </template>
 
 <script>
@@ -77,13 +72,48 @@ export default {
     // let data=await detailsApi();
     let data = await detailsApi(this.id);
     this.details = data.data.product;
-    console.log(this.details.STATUS);
+    console.log(this.details);
     console.log(data);
   },
   methods: {
     handelBack() {
       let path = this.$route.query.path || "/home";
       this.$router.push(path);
+    },
+    handleBuy() {
+      let cartData = {
+        id: String(this.details.PRODUCTID),
+        name: this.details.NAME,
+        price: String(this.details.MAXPRICE),
+        num: "1",
+        img: "http://static.228.cn" + this.details.PBIGIMG
+      };
+      console.log(cartData);
+      let hasData1 = sessionStorage.getItem("myCart");
+
+      if (!hasData1) {
+        sessionStorage.setItem("myCart", "[" + JSON.stringify(cartData) + "]");
+      } else {
+        let has = 0;
+        let hasData = JSON.parse(hasData1);
+        for (var i = 0; i < hasData.length; i++) {
+          if (hasData[i].id == cartData.id) {
+            hasData[i].num++;
+            cartData.num = hasData[i].num;
+            hasData.splice(i, 1);
+            hasData.push(cartData);
+            sessionStorage.setItem("myCart", JSON.stringify(hasData));
+            has = 1;
+            break;
+          }
+        }
+        if (has == 0) {
+          hasData.push(cartData);
+          console.log(hasData);
+          sessionStorage.setItem("myCart", JSON.stringify(hasData));
+        }
+      }
+      this.$router.push("/cart");
     }
   }
 };

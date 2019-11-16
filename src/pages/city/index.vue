@@ -41,26 +41,6 @@
 
 
 <script>
-// import {cityAllApi} from "@api/city"
-// export default {
-//     name:"city",
-//     data(){
-//        return {
-//            cityhotList:[],
-//            cityfList:[]
-//        }
-//     },
-//     async created(){
-//         let data=await cityAllApi();
-//         // console.log(data.data.hotCitys)
-//         // console.log(data.data.fcitys);
-//         this.cityhotList=data.data.hotCitys;
-//         this.cityfList=data.data.fcitys
-//     }
-
-    
-
-// }
 import { mapState } from "vuex";
 export default {
   name: "city",
@@ -83,10 +63,10 @@ export default {
     })
   },
   methods: {
-    handelCityto(nm, id,cs) {
+    handelCityto(nm, id, cs) {
       let path = this.$route.query.path || "/home";
       this.$router.push(path);
-      this.$store.commit("city/handelupdateCity", nm, id,cs);
+      this.$store.commit("city/handelupdateCity", nm, id, cs);
     }
   }
 };
@@ -135,7 +115,6 @@ export default {
   margin: 0.1rem 0.2rem;
 }
 .city_hot ul {
-
   display: flex;
   flex-wrap: wrap;
 }
