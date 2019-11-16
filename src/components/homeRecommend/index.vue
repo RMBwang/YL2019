@@ -4,6 +4,7 @@
       <router-link
         tag="li"
         :to="'details/'+item.URL"
+        
         class="active"
         v-for="(item,index) in homeRecommendList"
         :key="index"
@@ -24,12 +25,14 @@
 
 <script>
 import { homeRecommendApi } from "@api/home";
+import { detailsApi } from "@api/details";
 
 export default {
   name: "homeRecommend",
   data() {
     return {
-      homeRecommendList: []
+      homeRecommendList: [],
+      cityId: "bj"
     };
   },
 
@@ -37,12 +40,22 @@ export default {
     this.handelGetRecommend("bj");
   },
   activated() {
-    this.handelGetRecommend(this.$store.state.city.cityId);
+    if(this.cityId==this.$store.state.city.cityId){
+      this.homeRecommendList=JSON.parse(sessionStorage.getItem("homeRecommendList"))
+    }else{
+      this.handelGetRecommend(this.$store.state.city.cityId);
+      this.cityId=this.$store.state.city.cityId;
+      
+
+    }
+    
   },
   methods: {
     async handelGetRecommend(cityId) {
       let data = await homeRecommendApi(cityId);
+      console.log(data)
       this.homeRecommendList = data.data.recommendPage.list;
+      sessionStorage.setItem("homeRecommendList",JSON.stringify(data.data.recommendPage.list))
     }
   }
 };

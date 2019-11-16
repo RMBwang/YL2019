@@ -1,13 +1,13 @@
 <template>
   <div class="homeVenue">
     <ol class="venue_lists">
-      <li class="venue" v-for="(item,index) in homeVenueList" :key="index.id">
+      <router-link tag="li" :to="'details/'+item.URL" class="venue" v-for="(item,index) in homeVenueList" :key="index.id">
         <div>
           <img :src="'//static.228.cn'+item.IMG"/>
           <b class="mingcheng">{{item.VNAME}}</b>
           <span class="weizhi">{{item.ADDRESS}}</span>
         </div>
-      </li>
+      </router-link>
     </ol>
   </div>
 </template>
@@ -18,7 +18,8 @@ export default {
   name: "homeVenue",
   data() {
     return {
-      homeVenueList: []
+      homeVenueList: [],
+      cs:1
     };
   },
   created() {
@@ -26,15 +27,22 @@ export default {
     
   },
   activated(){
-    this.handelGetvenue(this.$store.state.city.cs)
+    if(this.cs==this.$store.state.city.cs){
+      this.homeVenueList=JSON.parse(sessionStorage.getItem("homeVenueList"))
+    }else{
+      this.handelGetvenue(this.$store.state.city.cs)
+      this.cs=this.$store.state.city.cs;
+    }
+    
   },
 
   methods:{
     async handelGetvenue(cs){
 
       let data=await homeVenueApi(cs);
-
+    console.log(cs)
       this.homeVenueList=data.data.venuePage.list;
+      sessionStorage.setItem("homeVenueList",JSON.stringify(data.data.venuePage.list))
       }
   }
  

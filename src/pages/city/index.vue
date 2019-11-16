@@ -135,8 +135,7 @@ export default {
   margin: 0.1rem 0.2rem;
 }
 .city_hot ul {
-  /* width: 100%;
-    height: 100%; */
+
   display: flex;
   flex-wrap: wrap;
 }

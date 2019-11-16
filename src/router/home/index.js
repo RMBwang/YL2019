@@ -26,5 +26,14 @@ export default {
                 flag:true
             },
         },
+        {
+            path:"/home/city",
+            redirect:"/city"
+        },
+        {
+            path:"/home/search",
+            redirect:"/search"
+        }
+       
     ]
 }

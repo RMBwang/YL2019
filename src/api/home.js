@@ -37,3 +37,12 @@ export const sliderApi=()=>http({
 
     }
 });
+
+
+
+//搜索
+export const homeSearch=(value)=>http({
+    methods:"get",
+    // url:"'https://m.228.cn/server/search/s/'+(encodeURICo(word))+'.json'",
+    url:'/server/search/s/'+value+'.json'
+})

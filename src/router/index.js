@@ -87,12 +87,12 @@ const router = new VueRouter({
 
         },
         {
-            path: "/details/:id",
+            path: "/details/:id",//动态路由
             name: "details",
             meta: {
                 flag: false
             },
-            props: true,
+            props:true,//路由解耦
             component: _ => import("@pages/details"),
             //箭头函数不传参()可以写成_
         },
