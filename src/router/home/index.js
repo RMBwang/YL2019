@@ -26,9 +26,14 @@ export default {
                 flag:true
             },
         },
-<<<<<<< HEAD
+        {
+            path:"/home/city",
+            redirect:"/city"
+        },
+        {
+            path:"/home/search",
+            redirect:"/search"
+        }
        
-=======
->>>>>>> ea3a5a470ccf3da38864e56f1406a976c8ac2f38
     ]
 }

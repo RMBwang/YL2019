@@ -19,13 +19,8 @@ export const homeVenueApi=(cs)=>http({
     method:"get",
     url:"/server/content/moreProductPlay.json",
     data:{
-<<<<<<< HEAD
         fcity:cs,
         pageNum:1,
-=======
-        fcity:-1,
-        pageNum:cs,
->>>>>>> ea3a5a470ccf3da38864e56f1406a976c8ac2f38
         type:1
     }
 })
@@ -42,3 +37,12 @@ export const sliderApi=()=>http({
 
     }
 });
+
+
+
+//搜索
+export const homeSearch=(value)=>http({
+    methods:"get",
+    // url:"'https://m.228.cn/server/search/s/'+(encodeURICo(word))+'.json'",
+    url:'/server/search/s/'+value+'.json'
+})

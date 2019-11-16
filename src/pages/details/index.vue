@@ -1,104 +1,86 @@
 <template>
   <div class="allDetails">
-  <div class="details">
-    <div class="headTop">
-      <div class="headBg">
-        <div class="bg" :style="'background:url(http://static.228.cn'+details.PBIGIMG+')'"></div>
-      </div>
-      <div class="containerOne">
-        <div class="headIcon">
-          <v-touch tag="div" @tap="handelBack()" class="iconfont">&#xe501;</v-touch>
-          <div class="iconRight">
-            <div class="iconfont">&#xe503;</div>
-            <div class="iconfont">&#xe936;</div>
+    <div class="details">
+      <div class="headTop">
+        <div class="headBg">
+          <div
+            class="bg"
+            :style="{'background':'url(http://static.228.cn'+(details.PBIGIMG?details.PBIGIMG+')':'')}"
+          ></div>
+        </div>
+        <div class="containerOne">
+          <div class="headIcon">
+            <v-touch tag="div" @tap="handelBack()" class="iconfont">&#xe501;</v-touch>
+            <div class="iconRight">
+              <div class="iconfont">&#xe503;</div>
+              <div class="iconfont">&#xe936;</div>
+            </div>
+          </div>
+          <div class="contentTwo">
+            <img :src="'http://static.228.cn'+details.PBIGIMG" class="contentImg" />
+            <div class="contentRight">
+              <div class="contentName">{{details.NAME}}</div>
+              <div class="contentLimit">实名观演</div>
+              <div class="contentMoney">￥ 22.8</div>
+            </div>
           </div>
         </div>
-        <div class="contentTwo">
-          <img
-            :src="'http://static.228.cn'+details.PBIGIMG"
-            class="contentImg"
-          />
-          <div class="contentRight">
-            <div class="contentName">{{details.NAME}}</div>
-            <div class="contentLimit">实名观演</div>
-            <div class="contentMoney">￥ 22.8</div>
-          </div>
+        <!-- 温馨提示 -->
+        <div class="tips" v-html="details.SPECIAL"></div>
+        <!-- 注意事项 -->
+        <div class="care">
+          <h3>注意事项</h3>
+          <div class="careDetails" v-html="details.PRECAUTIONS"></div>
         </div>
-      </div>
-      <!-- 温馨提示 -->
-      <div class="tips" v-html="details.SPECIAL">
-      </div>
-      <!-- 注意事项 -->
-      <div class="care">
-        <h3>注意事项</h3>
-        <div class="careDetails" v-html="details.PRECAUTIONS">
+        <!-- 公告 -->
+        <div class="notice">
+          <h3>购票公告</h3>
+          <div class="tipsTwo" v-html="details.BUY_AFFICHE"></div>
         </div>
+        <!-- 演出详情 -->
+        <div class="showDetails" v-html="details.INTRODUCTION"></div>
+        <!-- buy -->
       </div>
-      <!-- 公告 -->
-      <div class="notice">
-        <h3>购票公告</h3>
-        <div class="tipsTwo" v-html="details.BUY_AFFICHE"></div>
+      <div class="buy">
+        <div class="iconfont customer">&#xe62b;</div>
+        <div class="buyNow">{{details.STATUS==1?'立即购买':'立即预定'}}</div>
       </div>
-      <!-- 演出详情 -->
-      <div class="showDetails" v-html="details.INTRODUCTION"></div>
-      <!-- buy -->
-    </div>
-<<<<<<< HEAD
-=======
-    <Center/>
->>>>>>> ea3a5a470ccf3da38864e56f1406a976c8ac2f38
-  </div>
-    <div class="buy">
-      <div class="iconfont customer">&#xe62b;</div>
-      <div class="buyNow">立即购买</div>
     </div>
   </div>
 </template>
 
 <script>
-import {detailsApi} from "@api/details"
-import Center from "@common/components/center/index.vue"
+import { detailsApi } from "@api/details";
+import Center from "@common/components/center/index.vue";
 export default {
-    name:"Details",
-    props:["id"],
-    components:{
-      Center,
-    },
-    data(){
-      return {
-        details:{},
-      }
-    },
-    async created(){
-<<<<<<< HEAD
-      let data=await detailsApi();
-      // console.log(data);
-    },
-    methods:{
-      handelBack(){
-        // let path=this.$route.query.path;
-        // console.log(path)
-        // this.$router.push(path)
-
-        let path = this.$route.query.path || "/home";
-        this.$router.push(path);
-      }
-=======
-      let data=await detailsApi(this.id);
-      this.details=data.data.product;
-      console.log(this.details);
->>>>>>> ea3a5a470ccf3da38864e56f1406a976c8ac2f38
+  name: "Details",
+  props: ["id"],
+  components: {
+    Center
+  },
+  data() {
+    return {
+      details: {}
+    };
+  },
+  status_id: 1,
+  async created() {
+    // let data=await detailsApi();
+    let data = await detailsApi(this.id);
+    this.details = data.data.product;
+    console.log(this.details.STATUS);
+    console.log(data);
+  },
+  methods: {
+    handelBack() {
+      let path = this.$route.query.path || "/home";
+      this.$router.push(path);
     }
-    
+  }
 };
 </script>
 
 <style>
-
-<<<<<<< HEAD
-
-=======
->>>>>>> ea3a5a470ccf3da38864e56f1406a976c8ac2f38
 .allDetails {
   height: 100%;
   width: 100%;
@@ -109,11 +91,12 @@ export default {
   width: 100%;
   height: 100%;
   overflow: auto;
-  padding-bottom: .4rem;
+  padding-bottom: 0.4rem;
 }
 .headTop {
   width: 100%;
   position: relative;
+  overflow: hidden;
 }
 
 .headBg {
@@ -133,12 +116,6 @@ export default {
   height: 2.5rem;
   position: absolute;
   filter: blur(10px);
-<<<<<<< HEAD
-  background: url("http://static.228.cn/upload/2019/11/08/AfterTreatment/1573194546388_l5c2-0.jpg") center;
-=======
-  background-position: center;
-  overflow: hidden;
->>>>>>> ea3a5a470ccf3da38864e56f1406a976c8ac2f38
 }
 
 .containerOne {
@@ -181,7 +158,6 @@ export default {
 
 .contentTwo .contentImg {
   height: 1.3rem;
-  width: 1rem;
   display: block;
   border-radius: 0.08rem;
 }
@@ -280,20 +256,20 @@ export default {
   color: #7b8187;
 }
 
-.showDetails{
-  margin-left:.2rem;
-  margin-right:.2rem;
+.showDetails {
+  margin-left: 0.2rem;
+  margin-right: 0.2rem;
 }
-.showDetails img{
-  width:100%;height:100%;
+.showDetails img {
+  width: 100%;
+  height: 100%;
 }
-
 
 .notice {
   padding: 0.2rem;
 }
-.notice h3{
-  margin-bottom: .1rem;
+.notice h3 {
+  margin-bottom: 0.1rem;
 }
 
 .buy {

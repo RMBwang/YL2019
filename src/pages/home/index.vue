@@ -1,12 +1,12 @@
 <!--icon代表左上角箭头 写 就有 不写就没有-->
 <template>
   <div class="page">
-    <Header title="永乐票务" search />
+    <Header title="永乐票务" search home_icon  />
 
-    <router-link tag="div" :to="'/city'" class="city">
-      <span>{{this.$store.state.city.nm}}</span>
-      <i class="iconfont">&#xe619;</i>
-    </router-link>
+    <!-- <router-link tag="div" :to="'/city?path='+$route.path" class="city"> -->
+      <!-- <span>{{this.$store.state.city.nm}}</span>
+      <i class="iconfont">&#xe619;</i> -->
+    <!-- </router-link> -->
 
     <div class="container">
       <!-- 轮播图 -->
@@ -111,43 +111,13 @@ export default {
   },
   async created() {
     let data = await sliderApi();
-    // console.log(data);
     this.slideList = data.data.slideList;
-    console.log(this.slideList);
   }
 };
 </script>
 
 <style>
-.city {
-  height: 0.4rem;
-  line-height: 0.4rem;
-  position: absolute;
-  text-align: center;
-  color: #fff;
-  font-size: 0.12rem;
-  white-space: nowrap;
-  margin-left: 0.1rem;
-  display: inline-block;
-  left: 20px;
-  top:197px;
-  z-index: 9999;
-  color: red;
-}
 
-.city span {
-  margin-right: 0.3rem;
-}
-
-.city i {
-  position: absolute;
-  left: 0.3rem;
-  top: 0;
-  display: block;
-  width: 0.07rem;
-  height: 0.05rem;
-  padding-right: 0.08rem;
-}
 
 /* 轮播图 */
 
