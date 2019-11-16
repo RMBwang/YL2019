@@ -53,6 +53,9 @@ export default {
         //   alert(11111)
     
       })
+      if(newword.length==0){
+        this.searchList=[];
+      }
       
     }
   }
