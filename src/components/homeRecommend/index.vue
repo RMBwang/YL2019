@@ -1,19 +1,19 @@
 <template>
   <div class="homeRecommend">
     <ul class="active_lists">
-
-      <router-link tag="li" :to="'details/'+item.URL" class="active" v-for="(item,index) in homeRecommendList" :key="index">
-        
-          <img
-            :src='"http://static.228.cn/"+item.PBIGIMG'
-            alt
-          />
-          <b class="name">{{item.NAME}}</b>
-          <span class="shijian">{{item.BEGINDATE.split(" ")[0]}}</span>
-          <span class="tp">
-            <b class="red">￥{{item.MINPRICE}}</b>起
-          </span>
-      
+      <router-link
+        tag="li"
+        :to="'details/'+item.URL"
+        class="active"
+        v-for="(item,index) in homeRecommendList"
+        :key="index"
+      >
+        <img :src="'http://static.228.cn/'+item.PBIGIMG" alt />
+        <b class="name">{{item.NAME}}</b>
+        <span class="shijian">{{item.BEGINDATE.split(" ")[0]}}</span>
+        <span class="tp">
+          <b class="red">￥{{item.MINPRICE}}</b>起
+        </span>
       </router-link>
       <div class="load_more">
         <a href>查看更多</a>
@@ -23,31 +23,28 @@
 </template>
 
 <script>
-import {homeRecommendApi} from "@api/home";
+import { homeRecommendApi } from "@api/home";
 
 export default {
-  name:"homeRecommend",
-  data(){
+  name: "homeRecommend",
+  data() {
     return {
-      homeRecommendList:[],
-    }
+      homeRecommendList: []
+    };
   },
-  
-  created() {
-    this.handelGetRecommend("bj")
-  },
-  activated(){
-    this.handelGetRecommend(this.$store.state.city.cityId)
-  },
-  methods:{
-    async handelGetRecommend(cityId){
-      let data=await homeRecommendApi(cityId);
-      this.homeRecommendList=data.data.recommendPage.list;
 
-    }
+  created() {
+    this.handelGetRecommend("bj");
   },
-  
-  
+  activated() {
+    this.handelGetRecommend(this.$store.state.city.cityId);
+  },
+  methods: {
+    async handelGetRecommend(cityId) {
+      let data = await homeRecommendApi(cityId);
+      this.homeRecommendList = data.data.recommendPage.list;
+    }
+  }
 };
 </script>
 
@@ -58,7 +55,6 @@ export default {
   margin: 0 0.2rem;
   display: flex;
   flex-wrap: wrap;
-
 }
 .active_lists .active {
   margin: 0 0.025rem 0.15rem 0;
@@ -106,7 +102,7 @@ export default {
   text-align: center;
   line-height: 0.3rem;
   margin-bottom: 0.1rem;
-  font-size:.12rem;
+  font-size: 0.12rem;
 }
 .load_more a {
   color: #c33;
