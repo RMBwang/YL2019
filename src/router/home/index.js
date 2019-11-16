@@ -26,7 +26,6 @@ export default {
                 flag:true
             },
         },
-<<<<<<< HEAD
         {
             path:"/home/city",
             redirect:"/city"
@@ -36,7 +35,5 @@ export default {
             redirect:"/search"
         }
        
-=======
->>>>>>> jiang
     ]
 }
