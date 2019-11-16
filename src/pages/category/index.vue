@@ -4,41 +4,44 @@
     <Header title="分类" icon search />
     <div class="header_branch">
       <van-dropdown-menu style="z-index:10;">
-        <van-dropdown-item v-model="value1" :options="option1" style="z-index:11;"/>
+        <van-dropdown-item v-model="value1" :options="option1" style="z-index:11;" />
       </van-dropdown-menu>
-      
-    
     </div>
-        <div class="container">
-            <div class="main">
-            <ul class="goods_lists">
-                <router-link tag="li" :to="'/details/'+item.productid" v-for="(item,index) in categoryList " :key="index.id">
-                    
-                        <div class="left">
-                            <img :src="'//static.228.cn'+item.pbigimg">
-                            <i class="tip" :class="item.status==1?'ticket-color-blue':'ticket-color-red'">{{item.status==1?'预定':'售票中'}}</i>
-                        </div>
-                        <div class="right">
-                            <b class="name">{{item.shorta}}</b>
-                            <span class="shijian mt10">{{item.begindate}} ~ {{item.enddate}}</span>
-                            <span class="weizhi f11">{{item.vname}}</span>
-                            <span class="mt">
-                                <b class="jiage mt10">{{item.minprice}} - {{item.maxprice}}元</b>
-                            </span>
-                        </div>
-                    
-                </router-link>
- 
-                <div class="loard_more">
-                    <a href="">查看更多</a>
-                </div>
-            </ul>
+    <div class="container">
+      <div class="main">
+        <ul class="goods_lists">
+          <router-link
+            tag="li"
+            :to="'/details/'+item.productid"
+            v-for="(item,index) in categoryList "
+            :key="index.id"
+          >
+            <div class="left">
+              <img :src="'//static.228.cn'+item.pbigimg" />
+              <i
+                class="tip"
+                :class="item.status==1?'ticket-color-blue':'ticket-color-red'"
+              >{{item.status==1?'预定':'售票中'}}</i>
+            </div>
+            <div class="right">
+              <b class="name">{{item.shorta}}</b>
+              <span class="shijian mt10">{{item.begindate}} ~ {{item.enddate}}</span>
+              <span class="weizhi f11">{{item.vname}}</span>
+              <span class="mt">
+                <b class="jiage mt10">{{item.minprice}} - {{item.maxprice}}元</b>
+              </span>
+            </div>
+          </router-link>
 
           <div class="loard_more">
             <a href>查看更多</a>
           </div>
-       
-      
+        </ul>
+
+        <div class="loard_more">
+          <a href>查看更多</a>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -51,72 +54,71 @@ export default {
   data() {
     return {
       categoryList: [],
-      value1:"/category/default.json",
+      value1: "/category/default.json",
       option1: [
-        { text: '全部分类', value:"/category/default.json"},
-        { text: '演唱会', value: "/category/search-yanchanghui.json" },
-        { text: '话剧舞台剧', value: "/category/search-huajuwutaiju.json" },
-        { text: '音乐会', value: "/category/search-yinyuehui.json" },
-        { text: '舞蹈芭蕾', value:"/category/search-wudaobalei.json" },
-        { text: '戏曲综艺', value: "/category/search-xiquzongyi.json" },
-        { text: '体育赛事', value: "/category/search-tiyusaishi.json" },
-        { text: '儿童亲子', value: "/category/search-ertongqinzi.json" },
-        { text: '休闲娱乐', value: "/category/search-xiuxianyule.json" },
-      ],
+        { text: "全部分类", value: "/category/default.json" },
+        { text: "演唱会", value: "/category/search-yanchanghui.json" },
+        { text: "话剧舞台剧", value: "/category/search-huajuwutaiju.json" },
+        { text: "音乐会", value: "/category/search-yinyuehui.json" },
+        { text: "舞蹈芭蕾", value: "/category/search-wudaobalei.json" },
+        { text: "戏曲综艺", value: "/category/search-xiquzongyi.json" },
+        { text: "体育赛事", value: "/category/search-tiyusaishi.json" },
+        { text: "儿童亲子", value: "/category/search-ertongqinzi.json" },
+        { text: "休闲娱乐", value: "/category/search-xiuxianyule.json" }
+      ]
     };
   },
-  props:["title"],
-  
-  created(){
-    this.handleGetValue1((this.value1).replace(/["]/g,""));
+  props: ["title"],
+
+  created() {
+    this.handleGetValue1(this.value1.replace(/["]/g, ""));
     // console.log(this.value1)
   },
   // activated(){
   //    console.log(this.value1)
   //   if(this.value1){
-      
+
   //   }else{
 
   //   }
   // },
-  updated(){
+  updated() {
     // console.log(this.value1);
 
-    if(this.value1==(sessionStorage.getItem("url")).replace(/["]/g,"")){
+    if (this.value1 == sessionStorage.getItem("url").replace(/["]/g, "")) {
       // alert(111)
-      this.value1=(sessionStorage.getItem("url")).replace(/["]/g,"")
+      this.value1 = sessionStorage.getItem("url").replace(/["]/g, "");
       // console.log(this.value1)
-    }else{
-      let no=this.value1;
+    } else {
+      let no = this.value1;
       // console.log(no)
-      sessionStorage.setItem("url",JSON.stringify(no))
-      this.value1=JSON.parse(sessionStorage.getItem("url"));
+      sessionStorage.setItem("url", JSON.stringify(no));
+      this.value1 = JSON.parse(sessionStorage.getItem("url"));
       // console.log(this.value1);
-      this.handleGetValue1(this.value1)
+      this.handleGetValue1(this.value1);
     }
   },
 
-  methods:{
-    
-    async handleGetValue1(value1){
+  methods: {
+    async handleGetValue1(value1) {
       // console.log(value1)
       // console.log(111)
       // console.log(sessionStorage.getItem("url"));
       // let data=await categoryAllApi(sessionStorage.getItem((("url"))));
-      let data=await categoryAllApi(value1);
+      let data = await categoryAllApi(value1);
       // console.log(data)
 
       // let data=await categoryAllApi(sessionStorage.getItem((("url"))).replace(/["]/g,''));
       // console.log(sessionStorage.getItem((("url"))).replace(/["]/g,''))
 
       this.categoryList = data.data.pagerMemoryList;
-      sessionStorage.setItem("categoryList",JSON.stringify(data.data.pagerMemoryList))
-      sessionStorage.setItem("url",JSON.stringify(this.value1));
-      
+      sessionStorage.setItem(
+        "categoryList",
+        JSON.stringify(data.data.pagerMemoryList)
+      );
+      sessionStorage.setItem("url", JSON.stringify(this.value1));
     }
-  },
-
- 
+  }
 };
 </script>
 
@@ -127,7 +129,7 @@ export default {
   height: 0.4rem;
   margin-top: 0.4rem;
 }
-.vanCell{
+.vanCell {
   z-index: 10;
 }
 .header_branch ul {
@@ -146,8 +148,6 @@ export default {
   color: #999ea3;
 }
 
-
-
 .main {
   position: absolute;
   top: 0;
@@ -159,9 +159,8 @@ export default {
   background: #fff;
 }
 
-
-.bottom_four{
-  margin-top:.4rem;
+.bottom_four {
+  margin-top: 0.4rem;
 }
 /* list */
 .goods_lists {

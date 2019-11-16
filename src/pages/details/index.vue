@@ -43,19 +43,19 @@
       </div>
       <div class="buy">
         <div class="iconfont customer">&#xe62b;</div>
-        <div class="buyNow">{{details.STATUS==1?'立即购买':'立即预定'}}</div>
+        <div class="buyNow">{{details.STATUS==1?'立即预定':'立即购买'}}</div>
       </div>
       <!-- 演出详情 -->
       <div class="showDetails" v-html="details.INTRODUCTION"></div>
       <!-- buy -->
     </div>
-    <Center/>
+    <Center />
   </div>
-    <!-- <div class="buy">
+  <!-- <div class="buy">
       <div class="iconfont customer">&#xe62b;</div>
       <div class="buyNow">立即购买</div>
     </div>
-  </div> -->
+  </div>-->
 </template>
 
 <script>
