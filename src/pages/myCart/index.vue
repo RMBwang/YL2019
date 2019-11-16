@@ -1,8 +1,8 @@
 <template>
   <div class="cart">
-    <Top />
-    <Center />
-    <Bottom />
+    <Top class="cartTopIndex"/>
+    <Center :data="data" class="cartCenterIndex"/>
+    <Bottom class="cartBottomIndex"/>
   </div>
 </template>
 
@@ -15,10 +15,20 @@ export default {
   components: {
     Top,
     Center,
-    Bottom
+    Bottom,
+  },
+   data(){
+    return {
+      data:[],
+    }
   },
   created() {
-    this.$store.dispatch("handleAsyncGoodsList");
+    this.data=JSON.parse(sessionStorage.getItem("myCart"));
+    console.log(this.data);
+  },
+  
+  methods:{
+    
   }
 };
 </script>
@@ -29,7 +39,23 @@ export default {
   padding: 0;
 }
 .cart {
-  width: 990px;
-  margin: 30px auto;
+  width:100%;
+  height:100%;
+  overflow: auto;
 }
+.cartTopIndex{
+  width:100%;
+  height:.65rem;
+  position: fixed;
+  left:0;
+  top:0;
+  background:#fff;
+}
+.cartCenterIndex{
+  margin-top:.65rem;
+}
+.cartBottomIndex{
+  margin-bottom: .5rem;
+}
+
 </style>

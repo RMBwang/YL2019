@@ -7,7 +7,7 @@
       </div>
     </div>
     <div class="detailName">{{detailsNews}}</div>
-    <div class="newsTop" v-for="(item,index) in news" :key="index" v-show="news">
+    <router-link tag="div" :to="'/details/'+item.PRODUCTID" class="newsTop" v-for="(item,index) in news" :key="index" v-show="news">
       <img :src="'http://static.228.cn'+item.PBIGIMG" class="newsTopImg" />
       <div class="right">
         <div class="newsTitle">{{item.NAME}}</div>
@@ -15,7 +15,7 @@
         <div class="newsPosition">{{item.VNAME}}</div>
         <div class="newsMoney">{{item.MINPRICE}}-{{item.MAXPRICE}}元</div>
       </div>
-    </div>
+    </router-link>
   </div>
 </template>
 
@@ -60,12 +60,12 @@ html {
   font-size: 32vw;
 }
 
-        .activityDetail {
-            height: 100%;
-            width: 100%;
-            background: #eee;
-            overflow: auto;
-        }
+.activityDetail {
+    height: 100%;
+    width: 100%;
+    background: #eee;
+    overflow: auto;
+}
 
 .activityDetail {
   height: 100%;
