@@ -10,7 +10,7 @@
 
         <div class="main">
             <div class="top">
-                <router-link tag="div" :to="'/activity/'+((item.URL).substr(1))" class="list tc" v-for="(item,index) in list" :key="index">
+                <router-link tag="div" :to="'activity/'+((item.URL).substr(1))" class="list tc" v-for="(item,index) in list" :key="index">
                     <div class="photo">
                         <img :src="'http://static.228.cn'+item.IMG" alt="">
                     </div>

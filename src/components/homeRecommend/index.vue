@@ -30,9 +30,9 @@ export default {
   data(){
     return {
       homeRecommendList:[],
-      cityId:'bj'
     }
   },
+  
   created() {
     this.handelGetRecommend("bj")
   },

@@ -67,6 +67,8 @@ export default {
       }
     },
     async created(){
+      // let data=await detailsApi();
+      // console.log(data);
       let data=await detailsApi(this.id);
       this.details=data.data.product;
       console.log(this.details);
@@ -76,7 +78,8 @@ export default {
 
         let path = this.$route.query.path || "/home";
         this.$router.push(path);
-      }
+      },
+      
     }
     
 };

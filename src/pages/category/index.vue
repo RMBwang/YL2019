@@ -9,32 +9,36 @@
       
     
     </div>
-    <div class="container bottom_four">
-      <div class="main">
-        <ul class="goods_lists">
-          <li v-for="(item,index) in categoryList " :key="index.id">
-            <div class="left">
-              <img :src="'//static.228.cn'+item.pbigimg" />
-              <i
-                class="tip"
-                :class="item.status==1?'ticket-color-blue':'ticket-color-red'"
-              >{{item.status==1?'预定':'售票中'}}</i>
-            </div>
-            <div class="right">
-              <b class="name">{{item.shorta}}</b>
-              <span class="shijian mt10">{{item.begindate}} ~ {{item.enddate}}</span>
-              <span class="weizhi f11">{{item.vname}}</span>
-              <span class="mt">
-                <b class="jiage mt10">{{item.minprice}} - {{item.maxprice}}元</b>
-              </span>
-            </div>
-          </li>
+        <div class="container">
+            <div class="main">
+            <ul class="goods_lists">
+                <router-link tag="li" :to="'/details/'+item.productid" v-for="(item,index) in categoryList " :key="index.id">
+                    
+                        <div class="left">
+                            <img :src="'//static.228.cn'+item.pbigimg">
+                            <i class="tip" :class="item.status==1?'ticket-color-blue':'ticket-color-red'">{{item.status==1?'预定':'售票中'}}</i>
+                        </div>
+                        <div class="right">
+                            <b class="name">{{item.shorta}}</b>
+                            <span class="shijian mt10">{{item.begindate}} ~ {{item.enddate}}</span>
+                            <span class="weizhi f11">{{item.vname}}</span>
+                            <span class="mt">
+                                <b class="jiage mt10">{{item.minprice}} - {{item.maxprice}}元</b>
+                            </span>
+                        </div>
+                    
+                </router-link>
+ 
+                <div class="loard_more">
+                    <a href="">查看更多</a>
+                </div>
+            </ul>
 
           <div class="loard_more">
             <a href>查看更多</a>
           </div>
-        </ul>
-      </div>
+       
+      
     </div>
   </div>
 </template>

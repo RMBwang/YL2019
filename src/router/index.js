@@ -20,11 +20,11 @@ const router = new VueRouter({
         {
             path: "/",
             redirect: "/home",
-           
+
         },
         {
-            path:"/home/details/:id",
-            redirect:"/details/:id",
+            path: "/home/details/:id",
+            redirect: "/details/:id",
         },
         home,//主页
         category,//分类
@@ -54,7 +54,7 @@ const router = new VueRouter({
                 flag: true
             },
             component: _ => import("@pages/activity"),
-            
+
         },
         {
             path: "/activity/:name",
@@ -62,9 +62,9 @@ const router = new VueRouter({
             meta: {
                 flag: true
             },
-            props:true,
+            props: true,
             component: _ => import("@pages/activityDetail"),
-            
+
         },
         {
             path: "/category/:title",
@@ -72,9 +72,9 @@ const router = new VueRouter({
             meta: {
                 flag: true
             },
-            props:true,
+            props: true,
             component: _ => import("@pages/category"),
-            
+
         },
         {
             path: "/tsDetail",
@@ -82,9 +82,9 @@ const router = new VueRouter({
             meta: {
                 flag: true
             },
-            props:true,
+            props: true,
             component: _ => import("@pages/tsDetail"),
-            
+
         },
         {
             path: "/details/:id",
@@ -92,7 +92,7 @@ const router = new VueRouter({
             meta: {
                 flag: false
             },
-            props:true,
+            props: true,
             component: _ => import("@pages/details"),
             //箭头函数不传参()可以写成_
         },
@@ -119,10 +119,11 @@ const router = new VueRouter({
 
 
 router.beforeEach((to, from, next) => {//守卫
-    if (to.path != "/login" && to.meta.requiredAuth) {        if(localStorage.getItem("token")){
+    if (to.path != "/login" && to.meta.requiredAuth) {
+        if (localStorage.getItem("token")) {
             next()
-        }else{
-            next({name:"login",params:{to:to.path}})
+        } else {
+            next({ name: "login", params: { to: to.path } })
         }
     } else {
         next()
