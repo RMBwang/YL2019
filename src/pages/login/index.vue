@@ -137,6 +137,7 @@ export default {
             alert("登陆成功");
             this.UserName = "";
             this.PassWord = "";
+            this.$router.push("/loginSucc");
           } else {
             if (!this.UserName || this.UserName != GetUser[i].username) {
               alert("请输入正确的账号");

@@ -31,15 +31,6 @@ export default {
     this.$observer.$on("handleDeleteData", data => {
       this.data = data;
     });
-<<<<<<< HEAD
-  },
-  props: {
-    data: {
-      type: Array,
-      required: true
-    }
-  },
-=======
   },
 
   props: {
@@ -48,7 +39,6 @@ export default {
       required: true
     }
   },
->>>>>>> 16b1f7d1e4119afea793f013afc45319a3dd3863
   methods: {
     handleReducer(item, index) {
       if (item.num == 1) {
