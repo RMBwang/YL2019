@@ -1,6 +1,7 @@
 <template>
 <div class="topAll">
-  <h2 class="shoppingCart">购物车</h2>
+  <!-- <h2 class="shoppingCart">购物车</h2> -->
+  <Header icon title="我的购物车" />
   <div class="topCart">
     <label>
       <input

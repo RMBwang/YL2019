@@ -36,8 +36,6 @@
             <a href>查看更多</a>
           </div>
         </ul>
-
-        
       </div>
     </div>
   </div>
@@ -51,33 +49,26 @@ export default {
   data() {
     return {
       categoryList: [],
-      value1:"/category/default.json",
+      value1: "/category/default.json",
       option1: [
-        { text: '全部分类', value:"/category/default.json"},
-        { text: '演唱会', value: "/category/search-yanchanghui.json" },
-        { text: '话剧舞台剧', value: "/category/search-huajuwutaiju.json" },
-        { text: '音乐会', value: "/category/search-yinyuehui.json" },
-        { text: '舞蹈芭蕾', value:"/category/search-wudaobalei.json" },
-        { text: '戏曲综艺', value: "/category/search-xiquzongyi.json" },
-        { text: '体育赛事', value: "/category/search-tiyusaishi.json" },
-        { text: '儿童亲子', value: "/category/search-ertongqinzi.json" },
-        { text: '休闲娱乐', value: "/category/search-xiuxianyule.json" },
-      ],
+        { text: "全部分类", value: "/category/default.json" },
+        { text: "演唱会", value: "/category/search-yanchanghui.json" },
+        { text: "话剧舞台剧", value: "/category/search-huajuwutaiju.json" },
+        { text: "音乐会", value: "/category/search-yinyuehui.json" },
+        { text: "舞蹈芭蕾", value: "/category/search-wudaobalei.json" },
+        { text: "戏曲综艺", value: "/category/search-xiquzongyi.json" },
+        { text: "体育赛事", value: "/category/search-tiyusaishi.json" },
+        { text: "儿童亲子", value: "/category/search-ertongqinzi.json" },
+        { text: "休闲娱乐", value: "/category/search-xiuxianyule.json" }
+      ]
     };
   },
-  props:["title"],
-  
-  created(){
-    this.handleGetValue1((this.value1).replace(/["]/g,""));
-    // console.log(this.value1)
-  },
-  // activated(){
-  //    console.log(this.value1)
-  //   if(this.value1){
-  //   }else{
+  props: ["title"],
 
-  //   }
-  // },
+  created() {
+    this.handleGetValue1(this.value1.replace(/["]/g, ""));
+  },
+
   updated() {
     // console.log(this.value1);
 
@@ -125,7 +116,7 @@ export default {
   height: 0.4rem;
   margin-top: 0.4rem;
 }
-.vanCell{
+.vanCell {
   z-index: 10;
 }
 .header_branch ul {
@@ -143,8 +134,6 @@ export default {
 .header_branch ul li > i {
   color: #999ea3;
 }
-
-
 
 .main {
   position: absolute;
