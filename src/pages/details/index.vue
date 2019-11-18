@@ -3,10 +3,7 @@
     <div class="details">
       <div class="headTop">
         <div class="headBg">
-          <div
-            class="bg"
-            :style="{'background':'url(http://static.228.cn'+(details.PBIGIMG?details.PBIGIMG+')':'')}"
-          ></div>
+          <div class="bg" :style="'background:url(http://static.228.cn'+details.PBIGIMG+')'"></div>
         </div>
         <div class="containerOne">
           <div class="headIcon">

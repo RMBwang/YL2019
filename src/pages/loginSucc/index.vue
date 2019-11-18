@@ -1,50 +1,48 @@
 <template>
-  <div class="loginSucc">
-    <div class="loginSuccess">
-      <div class="big"></div>
-      <div class="aa">
-        <a href class="iconfont iconfontA">&#xe501;</a>
+  <div class="loginSuccess">
+    <div class="big"></div>
+    <div class="aa">
+      <a href class="iconfont iconfontA">&#xe501;</a>
+    </div>
+    <div class="photo">
+      <div class="photoImg">
+        <img src="http://m2static.228.cn/images/head-photo.png" alt />
       </div>
-      <div class="photo">
-        <div class="photoImg">
-          <img src="http://m2static.228.cn/images/head-photo.png" alt />
+      <div class="phone">12345678910</div>
+    </div>
+    <div style="background:#eee;flex:1;">
+      <div class="moneyList">
+        <div class="classify">
+          <div class="money">1张</div>
+          <div class="typeList">优惠券</div>
         </div>
-        <div class="phone">12345678910</div>
+        <div class="classify">
+          <div class="money">0.0元</div>
+          <div class="typeList">钱包</div>
+        </div>
+        <div class="classify">
+          <div class="money">0</div>
+          <div class="typeList">积分</div>
+        </div>
       </div>
-      <div style="background:#eee;flex:1;">
-        <div class="moneyList">
-          <div class="classify">
-            <div class="money">1张</div>
-            <div class="typeList">优惠券</div>
+      <div class="myOrder">
+        <div class="myOrderL">我的订单</div>
+        <div class="myOrderR">&gt;</div>
+      </div>
+      <div class="myServer">
+        <div class="myServerTop">我的服务</div>
+        <div class="myServerBottom">
+          <div class="myServerOther">
+            <div class="iconfont iconfontP">&#xe791;</div>
+            <div class="myServerList">收货地址</div>
           </div>
-          <div class="classify">
-            <div class="money">0.0元</div>
-            <div class="typeList">钱包</div>
+          <div class="myServerOther">
+            <div class="iconfont iconfontP">&#xe618;</div>
+            <div class="myServerList">我的活动</div>
           </div>
-          <div class="classify">
-            <div class="money">0</div>
-            <div class="typeList">积分</div>
-          </div>
-        </div>
-        <div class="myOrder">
-          <div class="myOrderL">我的订单</div>
-          <div class="myOrderR">&gt;</div>
-        </div>
-        <div class="myServer">
-          <div class="myServerTop">我的服务</div>
-          <div class="myServerBottom">
-            <div class="myServerOther">
-              <div class="iconfont iconfontP">&#xe791;</div>
-              <div class="myServerList">收货地址</div>
-            </div>
-            <div class="myServerOther">
-              <div class="iconfont iconfontP">&#xe618;</div>
-              <div class="myServerList">我的活动</div>
-            </div>
-            <div class="myServerOther">
-              <div class="iconfont iconfontP">&#xe660;</div>
-              <div class="myServerList">我的提问</div>
-            </div>
+          <div class="myServerOther">
+            <div class="iconfont iconfontP">&#xe660;</div>
+            <div class="myServerList">我的提问</div>
           </div>
         </div>
       </div>
@@ -68,8 +66,7 @@ a {
 
 html,
 body,
-.loginSuccess
-.loginSucc {
+.loginSuccess {
   height: 100%;
   width: 100%;
 }

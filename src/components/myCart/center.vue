@@ -15,7 +15,7 @@
       <p class="goodsPrice">{{item.price}}</p>
       <div class="num">
         <button @click="handleReducer(item,index)">-</button>
-        <input type="text" :value="item.num" readonly/>
+        <input type="text" :value="item.num" readonly />
         <button @click="handleAdd(item,index)">+</button>
       </div>
       <p class="Subtotal">{{item.num | sign(item.price)}}</p>
@@ -28,24 +28,16 @@
 export default {
   name: "center",
   created() {
-    // this.$observer.$on("handleDeleteData", data => {
-    //   this.data = data;
-    // });
-    this.data=JSON.parse(sessionStorage.getItem("myCart"));
-    console.log(this.data);
+    this.$observer.$on("handleDeleteData", data => {
+      this.data = data;
+    });
   },
-  // data(){
-  //   return {
-  //     data:[],
-  //   }
-  // },
-
-  // props: {
-  //   data: {
-  //     type: Array,
-  //     required: true
-  //   }
-  // },
+  props: {
+    data: {
+      type: Array,
+      required: true
+    }
+  },
   methods: {
     handleReducer(item, index) {
       if (item.num == 1) {
@@ -74,7 +66,7 @@ export default {
 
     handleDelete(index) {
       this.data.splice(index, 1);
-      sessionStorage.setItem("myCart", JSON.parse(this.data));
+      sessionStorage.setItem("myCart", JSON.stringify(this.data));
     },
     handleGoodsItemChange(flag, index) {
       this.data[index].flag = flag;
