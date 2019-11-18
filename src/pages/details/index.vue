@@ -43,7 +43,7 @@
       </div>
       <div class="buy">
         <div class="iconfont customer">&#xe62b;</div>
-        <div class="buyNow">{{details.STATUS==1?'立即预定':'立即购买'}}</div>
+        <div class="buyNow" @click="handleBuy()">{{details.STATUS==1?'立即预定':'立即购买'}}</div>
       </div>
       <!-- 演出详情 -->
       <div class="showDetails" v-html="details.INTRODUCTION"></div>
@@ -72,8 +72,8 @@ export default {
     // let data=await detailsApi();
     let data = await detailsApi(this.id);
     this.details = data.data.product;
-    console.log(this.details);
-    console.log(data);
+    // console.log(this.details);
+    // console.log(data);
   },
   methods: {
     handelBack() {
@@ -88,7 +88,7 @@ export default {
         num: "1",
         img: "http://static.228.cn" + this.details.PBIGIMG
       };
-      console.log(cartData);
+      // console.log(cartData);
       let hasData1 = sessionStorage.getItem("myCart");
 
       if (!hasData1) {
@@ -109,7 +109,7 @@ export default {
         }
         if (has == 0) {
           hasData.push(cartData);
-          console.log(hasData);
+          // console.log(hasData);
           sessionStorage.setItem("myCart", JSON.stringify(hasData));
         }
       }
