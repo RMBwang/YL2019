@@ -176,7 +176,7 @@ window.onload = function() {
 
 
 
-<style scoped>
+<style scoped >
 .all {
   height: 100%;
   width: 100%;

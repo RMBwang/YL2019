@@ -57,7 +57,8 @@ export default {
 
 
 
-<style>
+<style scoped>
+
 #header {
   position: fixed;
   height: 0.4rem;
@@ -90,14 +91,16 @@ export default {
 .city {
   height: 0.4rem;
   line-height: 0.4rem;
-  position: relative;
+  position: absolute;
   text-align: center;
   color: #fff;
   font-size: 0.12rem;
   white-space: nowrap;
   margin-left: 0.1rem;
   display: inline-block;
-  left: -0.9rem;
+  left: 0rem;
+  top:0rem;
+
 }
 
 .city span {
