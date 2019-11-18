@@ -105,7 +105,6 @@ export default {
               alert("账号已注册");
               this.user = "";
               this.pass = "";
-
               break;
             }
           }
@@ -121,15 +120,17 @@ export default {
       // alert(111)
       let GetUser=JSON.parse(sessionStorage.getItem("User"))
       console.log(GetUser)
-      for(var i=0; i<GetUser.length;i++){
-        if(this.UserName==GetUser[i].username&&this.PassWord==GetUser[i].password){
-          alert("登陆成功")
-          this.UserName="";
-          this.PassWord=""
-          
-        }else{
-
+      if(GetUser){
+        for(var i=0; i<GetUser.length;i++){
+          if(this.UserName==GetUser[i].username&&this.PassWord==GetUser[i].password){
+            alert("登陆成功")
+            this.UserName="";
+            this.PassWord="";
+            this.$router.push("/loginSucc");
+          }
         }
+      }else{
+        alert("账号不存在");
       }
     }
   }

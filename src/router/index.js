@@ -39,6 +39,14 @@ const router = new VueRouter({
             component: _ => import("@pages/search")
         },
         {
+            path:"/loginSucc",
+            name:"loginSucc",
+            meta:{
+                flag:true
+            },
+            component:_ => import("@pages/loginSucc")
+        },
+        {
             path: "/cart",
             name: "cart",
             meta: {
