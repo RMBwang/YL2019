@@ -9,7 +9,7 @@
       controls
       autoplay
     ></video>
-    <div class="details">
+    <div class="details22">
       <div class="titleAll">永乐说戏-东野圭吾《回廊亭杀人事件》</div>
       <div class="direction">
         本剧根据东野圭吾的同名小说改编
@@ -190,7 +190,7 @@ video {
   margin-top: 0.4rem;
 }
 
-.details {
+.details22 {
   padding: 0.2rem;
   border-bottom: 1px solid #ccc;
 }

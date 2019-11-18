@@ -2,7 +2,7 @@
   <div class="activityDetail">
     <div class="hezi">
       <div class="headBg1">
-        <div class="iconfont icon" @click="handleBack()">&lt;</div>
+        <div class="iconfont icon11" @click="handleBack()">&lt;</div>
         <div class="bg1" :style="'background:url(http://static.228.cn'+news[0].PBIGIMG+')'"></div>
       </div>
     </div>
@@ -87,7 +87,7 @@ html {
   width: 100%;
 }
 
-.icon {
+.icon11 {
   height: 0.2rem;
   width: 0.2rem;
   text-align: center;

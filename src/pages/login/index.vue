@@ -11,7 +11,7 @@
         <div class="check">
           <div class="forgetPassword">忘记密码</div>
         </div>
-        <button @click="handleLoginUser()">登录</button>
+        <button @click="handleLoginUser()" class="button11">登录</button>
         <div class="otherLogo">
           <a class="iconfont">&#xe601;</a>
           <a class="iconfont">&#xe6f5;</a>
@@ -27,7 +27,7 @@
         <div class="tipsLogin">手机号/邮箱地址是必须的(内容可变)</div>
         <input type="password" placeholder="请输入密码" class="pwd input" v-model="pass" />
         <div class="tipsPwd">密码是必须的(内容可变)</div>
-        <button @click="handleregister()">注册</button>
+        <button @click="handleregister()" class="button">注册</button>
         <div class="loginTitle">马上登录</div>
       </div>
     </div>
@@ -176,7 +176,7 @@ window.onload = function() {
 
 
 
-<style >
+<style scoped>
 .all {
   height: 100%;
   width: 100%;
@@ -244,7 +244,7 @@ window.onload = function() {
   align-items: center;
 }
 
-button {
+.button11 {
   height: 0.46rem;
   width: 100%;
   border-radius: 0.23rem;

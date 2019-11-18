@@ -3,7 +3,7 @@
     <div class="details">
       <div class="headTop">
         <div class="headBg">
-          <div class="bg" :style="'background:url(http://static.228.cn'+details.PBIGIMG+')'"></div>
+          <div class="bg" :style="'background:url(//static.228.cn'+details.PBIGIMG+')'"></div>
         </div>
         <div class="containerOne">
           <div class="headIcon">
@@ -14,7 +14,7 @@
             </div>
           </div>
           <div class="contentTwo">
-            <img :src="'http://static.228.cn'+details.PBIGIMG" class="contentImg" />
+            <img :src="'//static.228.cn'+details.PBIGIMG" class="contentImg" />
             <div class="contentRight">
               <div class="contentName">{{details.NAME}}</div>
               <div class="contentLimit">实名观演</div>
@@ -110,7 +110,7 @@ export default {
           sessionStorage.setItem("myCart", JSON.stringify(hasData));
         }
       }
-      this.$router.push("/cart");
+        this.$router.push("/cart");
     }
   }
 };

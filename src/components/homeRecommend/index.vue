@@ -4,7 +4,6 @@
       <router-link
         tag="li"
         :to="'details/'+item.URL"
-        
         class="active"
         v-for="(item,index) in homeRecommendList"
         :key="index"
@@ -25,7 +24,6 @@
 
 <script>
 import { homeRecommendApi } from "@api/home";
-import { detailsApi } from "@api/details";
 
 export default {
   name: "homeRecommend",

@@ -4,12 +4,12 @@
       <i class="iconfont">&#xe501;</i>
     </v-touch>
 
-  <v-touch @tap="handelcity()" class="city" v-if="home_icon" :to="'/city?path='+$route.path">
+    <v-touch @tap="handelcity()" class="city" v-if="home_icon" :to="'/city?path='+$route.path">
       <span>{{this.$store.state.city.nm}}</span>
       <i class="iconfont">&#xe619;</i>
     </v-touch>
 
-    <v-touch class="right_icon" v-if="search" @tap="handelSearch()" >
+    <v-touch class="right_icon" v-if="search" @tap="handelSearch()">
       <i class="iconfont">&#xe628;</i>
     </v-touch>
 
@@ -24,33 +24,32 @@ export default {
   name: "Header",
   props: {
     title: {
-        type: String,
-        default: "分类"
+      type: String,
+      default: "分类"
     },
     icon: {
       //左上角的 箭头
       type: Boolean
     },
-     home_icon:{
-       type:Boolean
-     
+    home_icon: {
+      type: Boolean
     },
-    search:{
+    search: {
       //右上角搜索
-      type:Boolean
+      type: Boolean
     }
   },
   methods: {
     handelBack() {
       this.$router.back();
-// alert(111)
+      // alert(111)
     },
-    handelcity(){
-      this.$router.push("city")
+    handelcity() {
+      this.$router.push("city");
       // alert(222)
     },
-    handelSearch(){
-      this.$router.push("search")
+    handelSearch() {
+      this.$router.push("search");
     }
   }
 };
@@ -80,17 +79,13 @@ export default {
 .left_icon i {
   font-size: 0.25rem;
 }
-.right_icon{
+.right_icon {
   position: absolute;
-  right:.1rem;
-  
+  right: 0.1rem;
 }
-.right_icon i{
-  font-size:.2rem
+.right_icon i {
+  font-size: 0.2rem;
 }
-
-
-
 
 .city {
   height: 0.4rem;
@@ -102,8 +97,7 @@ export default {
   white-space: nowrap;
   margin-left: 0.1rem;
   display: inline-block;
-  left: -.9rem;
-
+  left: -0.9rem;
 }
 
 .city span {

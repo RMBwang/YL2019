@@ -19,7 +19,7 @@
             </div>
           </div>
           <hr />
-          <div class="details">{{item.TEXT}}</div>
+          <div class="details333">{{item.TEXT}}</div>
         </router-link>
       </div>
       <div class="open">展开更多</div>
@@ -108,7 +108,7 @@ hr {
   margin-left: 0.15rem;
   margin-right: 0.15rem;
 }
-.details {
+.details333 {
   margin-left: 0.15rem;
   margin-right: 0.15rem;
   font-size: 0.11rem;
