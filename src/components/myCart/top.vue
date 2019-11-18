@@ -57,6 +57,7 @@ export default {
   align-items: center;
   margin-top:.4rem;
   justify-content: space-around;
+  margin-top:.4rem;
 }
 .shoppingCart{
   color:#f00;text-align: center;line-height:.4rem;

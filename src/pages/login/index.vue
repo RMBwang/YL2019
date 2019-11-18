@@ -37,7 +37,7 @@
 
 
 <script>
-import G from 'glob';
+import G from "glob";
 export default {
   data() {
     return {
@@ -87,7 +87,7 @@ export default {
       } else if (this.user && !this.pass) {
         alert("请输入密码");
       } else if (!this.user && !this.pass) {
-        alert("请输入");
+        alert("请输入账号跟密码");
       } else {
         let yonghu = JSON.parse(sessionStorage.getItem("User"));
         if (!yonghu) {
@@ -112,23 +112,41 @@ export default {
           if (has == 0) {
             yonghu.push({ username: this.user, password: this.pass });
             sessionStorage.setItem("User", JSON.stringify(yonghu));
+
             alert("注册成功");
+            this.user = "";
+            this.pass = "";
+            
           }
         }
       }
     },
-    handleLoginUser(){
+    handleLoginUser() {
       // alert(111)
-      let GetUser=JSON.parse(sessionStorage.getItem("User"))
-      console.log(GetUser)
-      for(var i=0; i<GetUser.length;i++){
-        if(this.UserName==GetUser[i].username&&this.PassWord==GetUser[i].password){
-          alert("登陆成功")
-          this.UserName="";
-          this.PassWord=""
-          this.$router.push("/loginSucc");
-        }else{
-
+      let GetUser = JSON.parse(sessionStorage.getItem("User"));
+      console.log(GetUser);
+      if (!GetUser) {
+        alert("账号不存在");
+        this.UserName = "";
+        this.PassWord = "";
+      } else {
+        for (var i = 0; i < GetUser.length; i++) {
+          if (
+            this.UserName == GetUser[i].username &&
+            this.PassWord == GetUser[i].password
+          ) {
+            alert("登陆成功");
+            this.UserName = "";
+            this.PassWord = "";
+          } else {
+            if (!this.UserName || this.UserName != GetUser[i].username) {
+              alert("请输入正确的账号");
+            } else if (!this.PassWord) {
+              alert("请输入正确的密码");
+            } else if (this.PassWord != GetUser[i].password) {
+              alert("密码错误");
+            }
+          }
         }
       }
     }
