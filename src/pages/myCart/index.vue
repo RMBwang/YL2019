@@ -1,8 +1,8 @@
 <template>
   <div class="cart">
-    <Top class="cartTopIndex"/>
-    <Center :data="data" class="cartCenterIndex"/>
-    <Bottom class="cartBottomIndex"/>
+    <Top class="cartTopIndex" />
+    <Center :data="data" class="cartCenterIndex" />
+    <Bottom class="cartBottomIndex" />
   </div>
 </template>
 
@@ -15,18 +15,17 @@ export default {
   components: {
     Top,
     Center,
-    Bottom,
+    Bottom
   },
-  data(){
+  data() {
     return {
-      data:[],
-    }
+      data: []
+    };
   },
   created() {
-    this.data=JSON.parse(sessionStorage.getItem("myCart"));
+    this.data = JSON.parse(sessionStorage.getItem("myCart"));
     console.log(this.data);
-  },
-  
+  }
 };
 </script>
 
@@ -36,23 +35,22 @@ export default {
   padding: 0;
 }
 .cart {
-  width:100%;
-  height:100%;
+  width: 100%;
+  height: 100%;
   overflow: auto;
 }
-.cartTopIndex{
-  width:100%;
-  height:.65rem;
+.cartTopIndex {
+  width: 100%;
+  height: 0.65rem;
   position: fixed;
-  left:0;
-  top:0;
-  background:#fff;
+  left: 0;
+  top: 0;
+  background: #fff;
 }
-.cartCenterIndex{
-  margin-top:.65rem;
+.cartCenterIndex {
+  margin-top: 0.65rem;
 }
-.cartBottomIndex{
-  margin-bottom: .5rem;
+.cartBottomIndex {
+  margin-bottom: 0.5rem;
 }
-
 </style>

@@ -15,7 +15,7 @@
       <p class="goodsPrice">{{item.price}}</p>
       <div class="num">
         <button @click="handleReducer(item,index)">-</button>
-        <input type="text" :value="item.num" readonly/>
+        <input type="text" :value="item.num" readonly />
         <button @click="handleAdd(item,index)">+</button>
       </div>
       <p class="Subtotal">{{item.num | sign(item.price)}}</p>
@@ -32,8 +32,6 @@ export default {
       this.data = data;
     });
   },
-  
-
   props: {
     data: {
       type: Array,
@@ -68,7 +66,7 @@ export default {
 
     handleDelete(index) {
       this.data.splice(index, 1);
-      sessionStorage.setItem("myCart", JSON.parse(this.data));
+      sessionStorage.setItem("myCart", JSON.stringify(this.data));
     },
     handleGoodsItemChange(flag, index) {
       this.data[index].flag = flag;
