@@ -123,7 +123,7 @@ export default {
 .allDetails {
   height: 100%;
   width: 100%;
-  background: #eee;
+  background: #fff;
   overflow: hidden;
 }
 

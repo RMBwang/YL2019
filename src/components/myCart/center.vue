@@ -2,16 +2,20 @@
   <div class="content">
     <div class="goods" v-for="(item,index) in data" :key="item.id">
       <label>
-        <input type="checkbox" :checked="item.flag" @change="handleGoodsItemChange(index)" />
+        <input
+          type="checkbox"
+          :checked="item.flag"
+          @change="handleGoodsItemChange(item.flag,index)"
+        />
       </label>
       <div class="goodsImg">
-        <img :src="item.img"/>
+        <img :src="item.img" />
       </div>
       <div class="goodsInfo">{{item.name}}</div>
       <p class="goodsPrice">{{item.price}}</p>
       <div class="num">
         <button @click="handleReducer(item,index)">-</button>
-        <input type="text" :value="item.num" />
+        <input type="text" :value="item.num" readonly/>
         <button @click="handleAdd(item,index)">+</button>
       </div>
       <p class="Subtotal">{{item.num | sign(item.price)}}</p>
@@ -23,53 +27,71 @@
 <script>
 export default {
   name: "center",
-  created(){
-    this.$observer.$on("handleDeleteData",(data)=>{
-      this.data=data;
-    })
+  created() {
+    // this.$observer.$on("handleDeleteData", data => {
+    //   this.data = data;
+    // });
+    this.data=JSON.parse(sessionStorage.getItem("myCart"));
+    console.log(this.data);
   },
-  props:{
-    data:{
-      type:Array,
-      required:true
-    }
-  },
-  methods:{
-    handleReducer(item,index){
-      console.log(this.data,123);
-      if(item.num==1){
-        item.num=1;
-        this.data[index].num=item.num;
-      }else{
+  // data(){
+  //   return {
+  //     data:[],
+  //   }
+  // },
+
+  // props: {
+  //   data: {
+  //     type: Array,
+  //     required: true
+  //   }
+  // },
+  methods: {
+    handleReducer(item, index) {
+      if (item.num == 1) {
+        item.num = 1;
+        this.data[index].num = item.num;
+        sessionStorage.setItem("myCart", JSON.stringify(this.data));
+      } else {
         item.num--;
-        this.data[index].num=item.num;
+        this.data[index].num = item.num;
+        sessionStorage.setItem("myCart", JSON.stringify(this.data));
       }
     },
-    handleAdd(item,index){
-      item.num++;
-      this.data[index].num=item.num;
+    handleAdd(item, index) {
+      if (typeof item.num == "string") {
+        item.num = Number(item.num) + 1;
+        sessionStorage.setItem("myCart", JSON.stringify(this.data));
+      } else {
+        item.num++;
+        sessionStorage.setItem("myCart", JSON.stringify(this.data));
+      }
     },
-    handleDelete(index){
-      this.data.splice(index,1);
-      // sessionStorage.setItem("myCart",JSON.parse(this.data));
+    handleChangeData(item, index) {
+      this.data[index].num = item.num;
+      sessionStorage.setItem("myCart", JSON.stringify(this.data));
+    },
+
+    handleDelete(index) {
+      this.data.splice(index, 1);
+      sessionStorage.setItem("myCart", JSON.parse(this.data));
+    },
+    handleGoodsItemChange(flag, index) {
+      this.data[index].flag = flag;
     }
   },
-  filters:{
-    sign(num,price){
-      return "￥"+(num*price)
+  filters: {
+    sign(num, price) {
+      return "￥" + num * price;
     }
-  },
-  // beforeDestroy(){
-  //   sessionStorage.setItem("myCart",JSON.parse(this.data));
-  // }
+  }
 };
 </script>
-
 <style>
 .goods {
   width: 100%;
   display: flex;
-  height: 1rem;;
+  height: 1rem;
   align-items: center;
   justify-content: space-around;
   background: #ccc;
@@ -77,8 +99,9 @@ export default {
 .goods > label {
   text-align: center;
 }
-.goods > .goodsInfo{
-  width:.4rem;font-size:.1rem;
+.goods > .goodsInfo {
+  width: 0.4rem;
+  font-size: 0.1rem;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -87,7 +110,7 @@ export default {
 }
 .goods > .goodsPrice {
   text-align: center;
-  width:.35rem;
+  width: 0.35rem;
   text-align: center;
 }
 .goods > .num {
@@ -100,19 +123,19 @@ export default {
 }
 .goods > .num > input {
   display: block;
-  width:.2rem;
+  width: 0.2rem;
 }
 
 .goods > .Subtotal {
   text-align: center;
-  width:.5rem;
+  width: 0.5rem;
 }
 
 .goods > .operation {
   text-align: center;
 }
 .goodsImg img {
-  width: .6rem;;
-  height: .6rem;;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 </style>
