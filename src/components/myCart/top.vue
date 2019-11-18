@@ -43,6 +43,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  margin-top:.4rem;
 }
 .shoppingCart{
   color:#f00;text-align: center;line-height:.4rem;
