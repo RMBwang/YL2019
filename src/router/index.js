@@ -67,6 +67,16 @@ const router = new VueRouter({
 
         },
         {
+            path: "/loginSucc",
+            name: "loginSucc",
+            meta: {
+                flag: true
+            },
+            props: true,
+            component: _ => import("@pages/loginSucc"),
+
+        },
+        {
             path: "/category/:title",
             name: "categoryOther",
             meta: {

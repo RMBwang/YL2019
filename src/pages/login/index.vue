@@ -126,7 +126,7 @@ export default {
           alert("登陆成功")
           this.UserName="";
           this.PassWord=""
-          
+          this.$router.push("/loginSucc");
         }else{
 
         }

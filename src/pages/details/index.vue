@@ -5,7 +5,7 @@
         <div class="headBg">
           <div
             class="bg"
-            :style="{'background':'url(http://static.228.cn'+(details.PBIGIMG?details.PBIGIMG+')':'')}"
+            :style="'background:url(http://static.228.cn'+details.PBIGIMG+')'"
           ></div>
         </div>
         <div class="containerOne">
@@ -17,7 +17,7 @@
             </div>
           </div>
           <div class="contentTwo">
-            <img :src="'http://static.228.cn'+details.PBIGIMG" class="contentImg" />
+            <img :src="'http://static.228.cn'+details.PBIGIMG" class="contentImg"/>
             <div class="contentRight">
               <div class="contentName">{{details.NAME}}</div>
               <div class="contentLimit">实名观演</div>

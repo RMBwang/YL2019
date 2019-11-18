@@ -55,6 +55,7 @@ export default {
   background: #f3f3f3;
   display: flex;
   align-items: center;
+  margin-top:.4rem;
   justify-content: space-around;
 }
 .shoppingCart{

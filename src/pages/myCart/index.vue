@@ -22,10 +22,10 @@ export default {
       data:[],
     }
   },
-  // created() {
-  //   this.data=JSON.parse(sessionStorage.getItem("myCart"));
-  //   console.log(this.data);
-  // },
+  created() {
+    this.data=JSON.parse(sessionStorage.getItem("myCart"));
+    console.log(this.data);
+  },
   
 };
 </script>
