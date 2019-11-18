@@ -6,6 +6,7 @@
       <input
         type="checkbox"
         @change="handleSelectedAllChange()"
+        :checked="checkedAll"
       />全选
     </label>
     <div></div>
@@ -22,9 +23,21 @@
 <script>
 export default {
   name: "top",
+  data(){
+    return {
+      checkedAll:true,
+    }
+  },
   methods: {
    handleSelectedAllChange(){
-     
+     this.checkedAll=!this.checkedAll;
+     let datax=JSON.parse(sessionStorage.getItem("myCart"));
+     console.log(datax);
+     for(var i=0;i<datax.length;i++){
+      datax[i].flag=this.checkedAll;
+     }
+     sessionStorage.setItem("myCart",JSON.stringify(datax));
+     console.log();
    }
   }
 };

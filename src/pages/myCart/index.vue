@@ -17,19 +17,16 @@ export default {
     Center,
     Bottom,
   },
-   data(){
+  data(){
     return {
       data:[],
     }
   },
-  created() {
-    this.data=JSON.parse(sessionStorage.getItem("myCart"));
-    console.log(this.data);
-  },
+  // created() {
+  //   this.data=JSON.parse(sessionStorage.getItem("myCart"));
+  //   console.log(this.data);
+  // },
   
-  methods:{
-    
-  }
 };
 </script>
 

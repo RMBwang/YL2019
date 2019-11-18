@@ -1,14 +1,8 @@
-<!--icon代表左上角箭头 写 就有 不写就没有-->
 <template>
   <div class="page">
     <Header title="永乐票务" search home_icon  />
-
-    <!-- <router-link tag="div" :to="'/city?path='+$route.path" class="city"> -->
-      <!-- <span>{{this.$store.state.city.nm}}</span>
-      <i class="iconfont">&#xe619;</i> -->
-    <!-- </router-link> -->
-
     <div class="container">
+      
       <!-- 轮播图 -->
       
       <div class="slider">

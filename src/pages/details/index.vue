@@ -43,17 +43,9 @@
       </div>
       <div class="buy">
         <div class="iconfont customer">&#xe62b;</div>
-        <div class="buyNow">{{details.STATUS==1?'立即购买':'立即预定'}}</div>
+        <div class="buyNow" @click="handleBuy()">{{details.STATUS==1?'立即预定':'立即购买'}}</div>
       </div>
-      <!-- 演出详情 -->
-      <div class="showDetails" v-html="details.INTRODUCTION"></div>
-      <!-- buy -->
-    <Center/>
-    </div>
-  
-    <div class="buy">
-      <div class="iconfont customer">&#xe62b;</div>
-      <div class="buyNow" @click="handleBuy()">立即购买</div>
+      <Center />
     </div>
   </div>
 </template>
@@ -69,7 +61,7 @@ export default {
   },
   data() {
     return {
-      details: {},
+      details: {}
     };
   },
   status_id: 1,
@@ -85,37 +77,38 @@ export default {
       let path = this.$route.query.path || "/home";
       this.$router.push(path);
     },
-    handleBuy(){
-      let cartData={
-        "id":String(this.details.PRODUCTID),
-        "name":this.details.NAME,
-        "price":String(this.details.MAXPRICE),
-        "num":'1',
-        "img":'http://static.228.cn'+this.details.PBIGIMG,
-      }
+    handleBuy() {
+      let cartData = {
+        id: String(this.details.PRODUCTID),
+        name: this.details.NAME,
+        price: String(this.details.MAXPRICE),
+        num: "1",
+        img: "http://static.228.cn" + this.details.PBIGIMG,
+        flag:"true",
+      };
       console.log(cartData);
-      let hasData1=sessionStorage.getItem("myCart");
-      
-      if(!hasData1){
-        sessionStorage.setItem("myCart","["+JSON.stringify(cartData)+"]");
-      }else{
-        let has=0;
-        let hasData=JSON.parse(hasData1);
-        for(var i=0;i<hasData.length;i++){
-          if(hasData[i].id==cartData.id){
+      let hasData1 = sessionStorage.getItem("myCart");
+
+      if (!hasData1) {
+        sessionStorage.setItem("myCart", "[" + JSON.stringify(cartData) + "]");
+      } else {
+        let has = 0;
+        let hasData = JSON.parse(hasData1);
+        for (var i = 0; i < hasData.length; i++) {
+          if (hasData[i].id == cartData.id) {
             hasData[i].num++;
-            cartData.num=hasData[i].num;
-            hasData.splice(i,1);
+            cartData.num = hasData[i].num;
+            hasData.splice(i, 1);
             hasData.push(cartData);
-            sessionStorage.setItem("myCart",JSON.stringify(hasData));
-            has=1;
+            sessionStorage.setItem("myCart", JSON.stringify(hasData));
+            has = 1;
             break;
           }
         }
-        if(has==0){
+        if (has == 0) {
           hasData.push(cartData);
           console.log(hasData);
-          sessionStorage.setItem("myCart",JSON.stringify(hasData));
+          sessionStorage.setItem("myCart", JSON.stringify(hasData));
         }
       }
       this.$router.push("/cart");
@@ -128,7 +121,7 @@ export default {
 .allDetails {
   height: 100%;
   width: 100%;
-  background: #eee;
+  background: #fff;
   overflow: hidden;
 }
 
