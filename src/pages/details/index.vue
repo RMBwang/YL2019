@@ -73,7 +73,7 @@ export default {
     let data = await detailsApi(this.id);
     this.details = data.data.product;
     // console.log(this.details);
-    // console.log(data);
+    // console.log(data.data.product.PRICE);
   },
   methods: {
     handelBack() {

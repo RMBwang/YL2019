@@ -68,7 +68,8 @@ export default {
       this.$router.push(path);
       this.$store.commit("city/handelupdateCity", nm, id, cs);
     }
-  }
+  },
+  
 };
 </script>
 
